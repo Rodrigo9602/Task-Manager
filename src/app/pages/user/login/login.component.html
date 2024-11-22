@@ -1,0 +1,67 @@
+<section class="form-container">
+    <div class="form-wrapper">        
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="custom-form">
+            <div class="form-title-wrapper">
+                <div class="login-p-wrapper">
+                    <span [innerHTML]="appIcon | sanitazer"></span>
+                    <h1>Inicio</h1>
+                </div>
+                <div class="header-wrapper">
+                    <p>Una herramienta orientada a la administración de tus tareas</p>
+                </div>
+            </div>
+            <div class="inputs-container">
+                <div class="input-wrapper">
+                    <input type="email" class="input" placeholder="email" formControlName="userEmail"
+                        autocomplete="email" required>
+
+                    <div class="input-icon">
+                        <span [innerHTML]="emailIcon | sanitazer"></span>
+                    </div>
+
+                    @if (loginForm.get('userEmail')?.invalid && (loginForm.get('userEmail')?.dirty ||
+                    loginForm.get('userEmail')?.touched)) {
+                    <p class="alert-message">
+                        * dirección email inválida
+                    </p>
+                    }
+                </div>
+
+                <div class="input-wrapper">
+                    <input type="{{ showPassword ? 'text' : 'password' }}" class="input" placeholder="contraseña"
+                        autocomplete="current-password" formControlName="userPassword" required>
+
+                    <div class="input-icon">
+                        <span [innerHTML]="passwordIcon | sanitazer"></span>
+                    </div>
+
+                    <button type="button" class="btn-icon" (click)="onShowPassword()">
+                        <span [innerHTML]="showIcon | sanitazer"></span>
+                    </button>
+
+                    @if(loginForm.get('userPassword')?.invalid && (loginForm.get('userPassword')?.dirty ||
+                    loginForm.get('userPassword')?.touched)) {
+                    <p class="alert-message">
+                        * la contraseña debe poseer al menos 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y un
+                        caracter
+                        especial
+                    </p>
+                    }
+                </div>
+            </div>
+
+            <div class="redirection-wrapper">
+                <p>Olvidaste tu contraseña? Presione <a class="redirection-link" [routerLink]="['/recover']">aquí</a>
+                    para recuperarla</p>
+            </div>
+
+            <button type="submit" class="btn-primary" [disabled]="!loginForm.valid">Sign in</button>
+        </form>
+
+        <div class="redirection-wrapper">
+            <p>Aún no estás registrado? Únete a la familia pulsando
+                <a class="redirection-link" [routerLink]="['/register']">aquí</a>
+            </p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,20 @@
+<nav class="navbar">
+    <header class="nav-header">
+        <h1>{{NavHeader}}</h1>
+    </header>
+    <section class="nav-content">
+        <section class="nav-items">
+            @for (item of NavItems(); track $index) {
+                <a [routerLink]=item.link>{{item.name}}</a>
+            }
+        </section>
+        <section class="nav-items">            
+            <button type="button" class="btn" (click)="logout()">
+                <span [innerHTML]="LogOutIcon() | sanitazer"></span>
+            </button>
+            <base-theme-toggle></base-theme-toggle>
+        </section>
+    </section>    
+</nav>
+
+

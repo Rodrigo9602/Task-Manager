@@ -1,0 +1,232 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --items-bg: #ebecf0;
+    --items-color-gradient: #3f8ae5;
+    --items-color-gradient-sec: #0a4b9e;
+    --items-color: #006bfb;
+    --bg: #fff;
+    --text-color: #23272f;
+    transition: all 0.3s ease;
+}
+
+
+html[data-theme='dark'] {
+    --bg: #23272f;
+    --items-bg: #343944;
+    --text-color: #fff;
+    --items-color-gradient: #3f8ae5;
+    --items-color-gradient-sec: #0a4b9e;
+    --items-color: #006bfb;
+}
+
+*, *::before, *::after {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;    
+    background-color: var(--bg);   
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'poppins';
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+h1 {
+    font-family: 'poppins';
+    font-size: 20px;
+    color: var(--text-color);
+}
+
+p {
+    font-family: 'ibm';
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+.btn-primary {
+    border: 1px solid transparent;
+    border-radius: 0.3rem;
+    width: 70%;
+    height: 2.5rem;
+    background-color: var(--items-color-gradient-sec);
+    color: #fff;
+    font-family: 'poppins';
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.btn-primary:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.btn-primary:disabled {
+    cursor: not-allowed;
+    background-color: var(--items-color-gradient);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px #fff inset;
+    box-shadow: 0 0 0 30px #fff inset;
+}
+
+.btn {
+    background-color: transparent;    
+    border: none;
+    padding-top: 5px; 
+    cursor: pointer;
+}
+
+.form-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-wrapper {
+    width: 90%;
+    max-width: 450px;
+    height: auto;
+    padding: 20px 10px;
+    border: 1px solid #c5c5c5;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.custom-form {
+    width: 100%;    
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:30px;
+}
+
+.form-title-wrapper {
+    width: 100%;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+}
+
+.login-p-wrapper {
+    width: 100%;    
+    display: flex;    
+    align-items: center;
+    justify-content: flex-start;
+    gap:8px;
+}
+
+.header-wrapper {
+    margin-top: -30px;
+}
+
+.inputs-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.input-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.input {
+    width: 80%;
+    height: 2rem;
+    border: 1px solid #000;
+    border-radius: 0.3rem;
+    background-color: var(--items-bg);
+    color: var(--text-color);
+    padding-left: 3rem;
+    font-family: 'poppins';
+    font-size: 1rem;
+    outline: none;
+}
+
+.alert-message {
+    font-size: 0.7rem;
+    color: #eb2929;
+    align-self: flex-start;
+    margin-left: 5%;
+    width: 90%;
+}
+
+.input-icon {
+    margin-top: -32px;
+    margin-left: -85%;
+    border-right: 1px solid #000;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon {
+    border: none;
+    background-color: transparent;
+    margin-top: -30px;
+    margin-left: 80%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.redirection-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+}
+
+
+.redirection-wrapper .redirection-link {
+    font-family: 'ibm';
+    font-size: 18px;
+    color: var(--items-color);
+    cursor: pointer;
+}
+
+
+
+

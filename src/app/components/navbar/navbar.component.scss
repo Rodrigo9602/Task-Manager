@@ -1,0 +1,30 @@
+.navbar {
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px;
+    background-color: var(--items-bg);
+    border-bottom: 1px solid var(--bg);
+}
+
+.nav-header {
+    padding: 0px 5px 0px 5px;
+}
+
+.nav-content {
+    padding: 0px 5px 0px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 50px;
+}
+
+.nav-items {
+    padding: 0px 5px 0px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
