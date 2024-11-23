@@ -2,16 +2,10 @@
   "users": [
     {
       "email": "admin@admin.com",
-      "password": "NotASafePassword123**",
-      "name": "Administrador",
+      "password": "$2a$10$Pf84raHrmimUAEoRrY0DNegKmBi9.yVHEuMUCi4ZHFrVK.hG/eNfq",
+      "name": "Admin",
       "role": "Admin",
-      "id": 1
-    },
-    {
-      "email": "fernandezrodrigo9602@gmail.com",
-      "password": "$2a$10$Y84nVWCbfN3PlnX8YD4U6.gDZ8efpxI2dBWEUVXUll.pNYLfkrXTe",
-      "name": "Rodrigo",
-      "role": "User",
+      "tasks": [],
       "id": 2
     }
   ],

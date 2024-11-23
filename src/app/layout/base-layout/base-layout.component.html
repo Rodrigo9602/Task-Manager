@@ -1,5 +1,7 @@
 <main class="main-layout">
-    <task-navbar [NavHeader]="'Dashboard'" [NavItems]="NavItemsArray"></task-navbar>
-    <section class="task-sidenav"></section>
-    <ng-content></ng-content>      
+    <task-navbar [NavHeader]="'Dashboard'" ></task-navbar>
+    <tasks-sidenav [NavItems]="NavItemsArray"></tasks-sidenav>
+    <section class="components">
+        <router-outlet></router-outlet>
+    </section>    
 </main>

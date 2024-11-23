@@ -1,6 +1,7 @@
-import { Component, computed, Input, OnInit, Signal } from '@angular/core';
+import { Component, computed, Input, Output, EventEmitter, OnInit, Signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ThemeToggleComponent } from '../theme-toggle/theme-toggle.component';
+import { MenuButtonComponent } from '../buttons/menu-button/menu-button.component';
 import { SanitazerPipe } from '../../pipes/sanitazer.pipe';
 
 import { NavItems } from '../../interfaces/nav-items';
@@ -13,13 +14,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'task-navbar',
   standalone: true,
-  imports: [RouterModule, SanitazerPipe, ThemeToggleComponent],
+  imports: [RouterModule, SanitazerPipe, ThemeToggleComponent, MenuButtonComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit{
   @Input() NavHeader: String = '';
   @Input() NavItems: Signal<Array<NavItems>> = computed(() => []);
+  
   public isDarkMode = computed(() => this._themeService.isDarkMode());
   public LogOutIcon = computed(()=>'');
 
@@ -28,6 +30,8 @@ export class NavbarComponent implements OnInit{
   ngOnInit(): void {
     this.LogOutIcon = computed(()=>{return this.isDarkMode() ? logoutIcon('#ffffff', 30) : logoutIcon('#000000', 30)});
   }
+
+  
 
   logout():void {
     this._authService.logout();

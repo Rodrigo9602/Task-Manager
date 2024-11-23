@@ -1,0 +1,49 @@
+.menu-button {
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: all ease 0.3s;
+    border-radius: 4px;
+}
+
+.bar:nth-child(2) {
+    width: 80%;
+}
+
+.firstbar-open {
+    transform: rotate(-45deg) translate(-5px, 5px); 
+}
+
+.firstbar-closed {
+    transform: rotate(0deg);
+}
+
+.secondbar-open {
+    opacity: 0;
+}
+
+.secondbar-closed {
+    opacity: 1;
+}
+
+.thirdbar-open {
+    transform: rotate(45deg) translate(-5px, -5px); 
+}
+
+.thirdbar-closed {
+    transform: rotate(0deg);
+}

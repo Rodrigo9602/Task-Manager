@@ -52,6 +52,14 @@ export class AuthService {
     );
   }
 
+  changeUserRole(userId: number, newRole: 'Admin' | 'User'): Observable<User> {    
+    return this.http.patch<User>(
+      `${this.API_URL}/users/${userId}`,
+      { role: newRole },
+      { headers: this.headers }
+    );
+  }
+
   getCurrentUser(): User | null {
     return this.currentUserSubject.value;
   }

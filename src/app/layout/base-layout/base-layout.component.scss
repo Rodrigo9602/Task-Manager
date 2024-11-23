@@ -14,14 +14,29 @@
     width: 100%;
   }
   
-  .task-sidenav {
+  tasks-sidenav {
     grid-area: sidenav;
-    width: 100%;
-    background-color: var(--items-bg);
+    width: 100%;    
   }
   
-  ng-content {
+  .components {
     grid-area: content;
     width: 100%;
     overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width:420px) {
+    .main-layout {
+      display: grid;
+      grid-template-areas: 
+        "navbar navbar"
+        "sidenav content";
+      grid-template-rows: auto 1fr;
+      grid-template-columns: 40% 60%;
+      height: 100vh;
+      width: 100%;
+    }
   }

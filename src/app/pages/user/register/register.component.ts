@@ -14,7 +14,7 @@ import { userIcon, eyeOpen, eyeClose, appLogo, emailIcon, lockIcon } from '../..
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnInit {
-  public userIcon:string = userIcon(20);
+  public userIcon:string = userIcon('#000000',20);
   public appIcon:string = appLogo(24);
   public emailIcon:string = emailIcon(20);
   public passwordIcon:string = lockIcon(20);
@@ -32,6 +32,7 @@ export class RegisterComponent implements OnInit {
     name: '',
     password: '',
     role: 'User',
+    tasks: [],
     id: 2
   };
 
@@ -52,7 +53,10 @@ export class RegisterComponent implements OnInit {
     this.user.password = this.registerForm.value.userPassword!;
 
     this._authService.register(this.user).subscribe({
-      next: res => {console.log(res)},
+      next: () => {
+        console.log('Usuario Registrado');
+        this._router.navigate(['/']);
+      },
       error: e => { console.log(e) }
     });
   }

@@ -33,7 +33,11 @@ body {
     margin: 0;    
     background-color: var(--bg);   
     color: var(--text-color);
-    overflow-x: hidden;
+    overflow: hidden;
+}
+
+.route-active {
+    color: var(--items-color);
 }
 
 a {
@@ -53,6 +57,12 @@ p {
     font-family: 'ibm';
     font-size: 18px;
     color: var(--text-color);
+}
+
+.btn {
+    border: none;
+    background-color: transparent;
+    padding: 5px;
 }
 
 .btn-primary {

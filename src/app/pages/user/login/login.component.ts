@@ -38,7 +38,8 @@ export class LoginComponent implements OnInit {
   onSubmit():void {
     console.log(this.loginForm.value)
     this._authService.login(this.loginForm.value.userEmail!, this.loginForm.value.userPassword!).subscribe({
-      next: res => {
+      next: () => {
+        console.log('Sesión iniciada')
         this._router.navigate(['/tasks'])
       },
       error: e => { console.log(e) }

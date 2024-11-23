@@ -1,0 +1,13 @@
+<section class="sidenav" [ngClass]="opened() ? 'sidenav-open': 'sidenav-close'">
+  <header>
+    {{sidenavTitle}}
+  </header>
+  <div class="content">
+    @for (item of NavItems(); track $index) {
+    <a (click)="onNavigate()" [routerLink]="item.link" [routerLinkActive]="['route-active']" class="sidelink">
+      <span [innerHTML]=" item.icon | sanitazer"></span>
+      {{item.name}}
+    </a>
+    }
+  </div>
+</section>
