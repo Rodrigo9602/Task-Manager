@@ -2,12 +2,20 @@
   "users": [
     {
       "email": "admin@admin.com",
-      "password": "$2a$10$Pf84raHrmimUAEoRrY0DNegKmBi9.yVHEuMUCi4ZHFrVK.hG/eNfq",
+      "password": "$2a$10$icS9Wl2BkYyYw2Sne.UDJekSxQN2Ms8luGbDYmJvOkAu3vbbl17E6",
       "name": "Admin",
       "role": "Admin",
-      "tasks": [],
-      "id": 2
+      "id": 1
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "name": "Probar endpoints de la API",
+      "description": "Probar que cada endpoint funcione como se espera y que se cumplan las reglas de acceso",
+      "end_date": "2024-11-28T18:30:00Z",
+      "state": "Pendiente",
+      "start_date": "2024-11-24T10:30:00Z",
+      "id": 1
+    }
+  ]
 }

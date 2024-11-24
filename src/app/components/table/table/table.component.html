@@ -1,0 +1,40 @@
+<!-- table.component.html -->
+<div class="table-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Filtrar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ej. admin" #input class="filter-input">
+  </mat-form-field>
+
+  <div class="custom-table">
+    <table mat-table [dataSource]="dataSource" class="full-width-table">
+      <!-- Columnas dinámicas -->
+      @for (column of columns; track $index) {
+        <ng-container [matColumnDef]="displayedColumns[$index]">
+          <th mat-header-cell *matHeaderCellDef class="tab-header"> {{column}} </th>
+          <td mat-cell class="tab-el" *matCellDef="let element" class="tab-cell"> {{element[displayedColumns[$index]]}} </td>
+        </ng-container>
+      }
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Fila para cuando no hay datos -->
+      <tr class="mat-row" *matNoDataRow>
+        @if(displayedColumns.length && input.value !== "") {
+          <td class="mat-cell no-data-message" [attr.colspan]="displayedColumns.length">
+            No se encontraron datos que coincidan con el filtro "{{input.value}}"
+          </td>
+        } @else {
+          <td class="mat-cell no-data-message" [attr.colspan]="displayedColumns.length">
+            No se encontraron datos
+          </td>
+        }
+        
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10]" 
+                   aria-label="Seleccionar página de elementos">
+    </mat-paginator>
+  </div>
+</div>

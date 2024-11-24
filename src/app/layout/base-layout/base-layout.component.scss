@@ -2,11 +2,12 @@
     display: grid;
     grid-template-areas: 
       "navbar navbar"
-      "sidenav content";
+      "content content";
     grid-template-rows: auto 1fr;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: auto 1fr;
     height: 100vh;
     width: 100%;
+    position: relative;
   }
   
   task-navbar {
@@ -15,8 +16,12 @@
   }
   
   tasks-sidenav {
-    grid-area: sidenav;
-    width: 100%;    
+    position: absolute;
+    left:0;
+    top:60px;
+    z-index: 200;
+    width: 20%; 
+       
   }
   
   .components {
@@ -25,18 +30,13 @@
     overflow: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;   
   }
 
+  
+
   @media (max-width:420px) {
-    .main-layout {
-      display: grid;
-      grid-template-areas: 
-        "navbar navbar"
-        "sidenav content";
-      grid-template-rows: auto 1fr;
-      grid-template-columns: 40% 60%;
-      height: 100vh;
-      width: 100%;
+    tasks-sidenav {
+      width: 35%;
     }
   }

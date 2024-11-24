@@ -4,9 +4,9 @@
   </header>
   <div class="content">
     @for (item of NavItems(); track $index) {
-    <a (click)="onNavigate()" [routerLink]="item.link" [routerLinkActive]="['route-active']" class="sidelink">
+    <a (click)="onNavigate()" [routerLink]="item.link" class="sidelink">
       <span [innerHTML]=" item.icon | sanitazer"></span>
-      {{item.name}}
+      <span class="sidelink-text">{{ item.name }}</span>
     </a>
     }
   </div>

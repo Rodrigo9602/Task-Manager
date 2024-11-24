@@ -1,7 +1,7 @@
- .sidenav {   
+ .sidenav {
    height: 100vh;
    padding: 100px 0px 30px 30px;
-   display: flex;   
+   display: flex;
    align-items: flex-start;
    justify-content: center;
    transition: all ease 0.3s;
@@ -10,11 +10,11 @@
  }
 
  .sidenav-open {
-    width: 100%;
+   width: 100%;
  }
 
  .sidenav-close {
-  width: 15%;
+   width: 15%;
  }
 
  .content {
@@ -22,10 +22,10 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   justify-content: center; 
-   gap: 30px;     
+   justify-content: center;
+   gap: 30px;
  }
- 
+
  .sidelink {
    width: 100%;
    display: flex;
@@ -40,13 +40,12 @@
    cursor: pointer;
  }
 
- .sidelink:hover {
-  color: var(--items-color);
- }
-
- @media (max-width:420px) {
-  .sidenav-close {
-    width: 25%;
+ @media (max-width:990px) {
+   .sidenav-close {
+     width: 25%;
+     transform: translateX(-300px);
+   }  
+   .sidenav-open .sidelink {
+     gap: 15px;
    }
  }
-

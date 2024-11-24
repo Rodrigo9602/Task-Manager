@@ -1,0 +1,109 @@
+.table-container {
+  padding: 20px;
+  width: 90%;
+  max-width: 750px;
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.filter-input {
+  color: var(--text-color) !important;
+}
+
+.custom-table {
+  width: 100%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+  border-radius: 12px;
+  background-color: var(--items-bg);
+}
+
+.tab-header,
+.tab-cell,
+.no-data-message,
+.mat-row,
+.full-width-table,
+mat-paginator {
+  background-color: var(--items-bg) !important;
+  color: var(--text-color);
+}
+
+.no-data-message {
+  width: 100%;
+  text-align: center;
+  font-family: 'Poppins';
+  font-size: 14px;
+}
+
+.tab-cell {
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-cell,
+.mat-header-cell {
+  width: 100%;
+  padding: 8px 0;  
+}
+
+.mat-header-cell {
+  font-weight: bold;
+}
+
+/* Estilos responsive */
+@media screen and (max-width: 600px) {
+  .mat-table {
+    display: block;
+  }
+
+  .mat-row, 
+  .mat-header-row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 16px;
+  }
+
+  .mat-cell {
+    padding: 8px 16px;
+  }
+
+  .mat-header-cell {
+    font-weight: bold;
+  }
+
+  .tab-cell {
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mat-cell:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    margin-right: 8px;
+  }
+}
+
+/* Estilos para la paginación en móvil */
+@media screen and (max-width: 400px) {
+  .mat-paginator {
+    font-size: 12px;
+  }
+}

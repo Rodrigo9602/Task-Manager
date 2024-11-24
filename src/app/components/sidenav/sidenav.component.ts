@@ -16,12 +16,13 @@ import { SanitazerPipe } from '../../pipes/sanitazer.pipe';
 export class SidenavComponent  implements OnInit{
   @Input() sidenavTitle:string = '';
   @Input() NavItems: Signal<Array<NavItems>> = computed(() => []);
-  @Input() opened:Signal<boolean> = computed(()=>false); // El sidenav está cerrado por defecto  
+  @Input() opened:Signal<boolean> = computed(()=>false); 
 
   constructor(private _sidenavService:SidenavService) {}
+
   ngOnInit(): void {
     this.opened = computed(()=>this._sidenavService.sideNavState());
-  }
+  }  
 
   onNavigate() {        
     this._sidenavService.toggleSideNav(false);

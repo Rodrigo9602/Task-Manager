@@ -3,8 +3,8 @@ import { RouterModule, Router } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/security/security.service';
 import { SanitazerPipe } from '../../../pipes/sanitazer.pipe';
-import { User } from '../../../interfaces/user';
 import { userIcon, eyeOpen, eyeClose, appLogo, emailIcon, lockIcon } from '../../../../../public/icons/icon';
+import { userReg } from '../../../interfaces/user';
 
 @Component({
   selector: 'app-register',
@@ -27,13 +27,11 @@ export class RegisterComponent implements OnInit {
     userPassword: new FormControl('', Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/)),    
   });
 
-  private user:User = {
+  private user:userReg = {
     email: '',
     name: '',
     password: '',
-    role: 'User',
-    tasks: [],
-    id: 2
+    role: 'User',        
   };
 
   constructor(private _authService: AuthService, private _router:Router) {}
