@@ -1,1 +1,17 @@
-<app-table [columns]="columns" [dataInput]="usersData$"></app-table>
+<app-table
+  [columns]="columns"
+  [dataKeys]="dataKeys"
+  [dataInput]="usersData$"
+  [dataType]="'user'"
+  (viewItem)="onDetails($event)"
+  (editItem)="onEdit($event)"
+  (deleteItem)="onDelete($event)"
+  (assignTask)="onAssignTask($event)"
+  ></app-table>
+
+  <section class="mobile-component">
+    @for (item of usersData; track $index) {
+      <app-user-card [userData]="item"></app-user-card>
+    }
+  </section>
+  

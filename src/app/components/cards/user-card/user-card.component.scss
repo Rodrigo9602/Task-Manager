@@ -1,0 +1,25 @@
+basic-card {
+    width: 100%;
+}
+
+.user-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+       
+}
+
+.user-email {
+    margin-top: -35px;
+    color: #888888;
+}
+
+.user-card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn-primary {
+    max-width: 120px;
+}

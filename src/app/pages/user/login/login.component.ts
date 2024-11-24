@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   public appIcon:string = appLogo(24);
   public emailIcon:string = emailIcon(20);
   public passwordIcon:string = lockIcon(20);
-  public showIcon:string = eyeOpen(22);
+  public showIcon:string = eyeOpen('#000000',22);
   public date: String = new Date().toDateString();
   public showPassword:Boolean = false;
   public loginForm = new FormGroup({    
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   onShowPassword():void {
     this.showPassword = !this.showPassword;
-    this.showPassword ? this.showIcon = eyeClose(22) : this.showIcon = eyeOpen(22);
+    this.showPassword ? this.showIcon = eyeClose('#000000', 22) : this.showIcon = eyeOpen('#000000', 22);
   }
 
   onSubmit():void {

@@ -1,1 +1,16 @@
-<app-table [columns]="columns" [dataInput]="tasksData$"></app-table>
+<app-table
+  [columns]="columns"
+  [dataKeys]="dataKeys"
+  [dataInput]="tasksData$"
+  [dataType]="'task'"
+  (viewItem)="onDetails($event)"
+  (editItem)="onEdit($event)"
+  (deleteItem)="onDelete($event)"
+  (viewUserDetails)="onUsersDetails($event)"
+  >
+</app-table>
+<section class="mobile-component">
+  @for (item of tasksData; track $index) {
+    <app-task-card [taskData]="item"></app-task-card>
+  }
+</section>

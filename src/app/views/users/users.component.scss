@@ -1,0 +1,19 @@
+.mobile-component {
+    display: none;
+    width: 80%;
+}
+
+@media (max-width: 760px) {
+    app-table {
+        display: none;
+    }
+
+    .mobile-component {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 300px;
+    }
+}

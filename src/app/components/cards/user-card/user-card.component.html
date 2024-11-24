@@ -1,0 +1,23 @@
+<basic-card>
+    <section>
+        <header class="user-card-header">
+            <h1>{{userData.name}}</h1>
+            <p class="user-email">{{userData.email}}</p>
+        </header>
+    </section>
+    <section class="user-card-body">
+        <p>{{userData.role}}</p>
+        <div class="lateral-separator"></div>
+        <button [matMenuTriggerFor]="menu" aria-label="Opciones" class="btn-primary">
+            Acciones
+        </button>
+        <mat-menu #menu="matMenu">
+            @for (action of actions; track action.action) {
+            <button mat-menu-item (click)="handleAction(action.action, userData)">
+                <mat-icon>{{action.icon}}</mat-icon>
+                <span>{{action.label}}</span>
+            </button>
+            }
+        </mat-menu>
+    </section>
+</basic-card>

@@ -1,3 +1,4 @@
+/* table.component.scss */
 .table-container {
   padding: 20px;
   width: 90%;
@@ -63,13 +64,20 @@ mat-paginator {
   font-weight: bold;
 }
 
+// Estilo para la columna de acciones
+.mat-column-actions {
+  width: 80px;
+  text-align: center;
+}
+
+
 /* Estilos responsive */
 @media screen and (max-width: 600px) {
   .mat-table {
     display: block;
   }
 
-  .mat-row, 
+  .mat-row,
   .mat-header-row {
     width: 100%;
     display: flex;
@@ -98,6 +106,11 @@ mat-paginator {
     float: left;
     font-weight: bold;
     margin-right: 8px;
+  }
+
+  .mat-column-actions {
+    width: 100%;
+    text-align: left;
   }
 }
 

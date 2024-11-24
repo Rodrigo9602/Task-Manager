@@ -241,8 +241,17 @@ app-table {
     display: flex;
     align-items: center;
     justify-content: center;    
-  }
+}
 
+app-user-card,
+app-tasks-card {
+    width: 100%;
+}
 
+.lateral-separator {
+    width: 2px;
+    background-color: var(--text-color);
+    height: 20px;
+}
 
 
