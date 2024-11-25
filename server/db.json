@@ -34,19 +34,21 @@
       "name": "Probar endpoints de la API",
       "description": "Probar que cada endpoint funcione como se espera y que se cumplan las reglas de acceso",
       "end_date": "2024-11-28T18:30:00Z",
-      "state": "Pendiente",
+      "state": "Completada",
       "start_date": "2024-11-24T10:30:00Z",
       "id": 1,
-      "userId": 2
+      "userId": 2,
+      "user": 2
     },
     {
       "name": "Navbar",
       "description": "Crear componente de navegación para vista Desktop y Mobile",
       "start_date": "2024-11-25T14:09:13.714Z",
       "end_date": "2024-11-27T05:00:00.000Z",
-      "state": "Pendiente",
+      "state": "Completada",
       "userId": 1,
-      "id": 2
+      "id": 2,
+      "user": 1
     },
     {
       "name": "Interceptores y Guardianes",
@@ -61,28 +63,21 @@
       "name": "Temas",
       "description": "Configuración de los temas claros y oscuros en la aplicación",
       "start_date": "2024-11-25T14:25:17.020Z",
-      "end_date": "2024-11-23T05:00:00.000Z",
+      "end_date": "2024-11-29T05:00:00.000Z",
       "state": "Pendiente",
       "userId": 2,
-      "id": 4
-    },
-    {
-      "name": "Selector de Temas",
-      "description": "Crear botón tipo switch para conmutar el tema de la aplicación",
-      "start_date": "2024-11-25T14:31:37.375Z",
-      "end_date": "2024-11-23T05:00:00.000Z",
-      "state": "Pendiente",
-      "userId": 2,
-      "id": 5
+      "id": 4,
+      "user": 2
     },
     {
       "name": "Tabla",
       "description": "Crear componente dinámico para el registro de datos de usuarios y tareas en formato de tabla",
       "start_date": "2024-11-25T14:33:26.369Z",
-      "end_date": "2024-11-23T05:00:00.000Z",
+      "end_date": "2024-11-26T05:00:00.000Z",
       "state": "Pendiente",
       "userId": 2,
-      "id": 6
+      "id": 6,
+      "user": 2
     }
   ]
 }

@@ -27,6 +27,7 @@ export class TaskDialogComponent implements OnInit {
   public users: User[] = [];
   selectedUser = new FormControl('');
   taskForm!: FormGroup;
+  taskEditForm!: FormGroup;
 
   constructor(
     private _userService: UserService,
@@ -52,6 +53,16 @@ export class TaskDialogComponent implements OnInit {
       state: ['Pendiente', Validators.required],
       userId: [''],
     });
+
+    this.taskEditForm = this.fb.group({
+      id: [this.data.task.id],
+      name: [this.data.task.name, [Validators.required, Validators.minLength(3)]],
+      description: [this.data.task.description, Validators.required],
+      start_date: [this.data.task.start_date, Validators.required],
+      end_date: [this.data.task.end_date, Validators.required],
+      state: [this.data.task.state, Validators.required],
+      user: [this.data.task.userId]
+    })
     
     if (this.data.action === 'show' && this.data.task.userId) {
       this._userService.getUser(this.data.task.userId).subscribe({
@@ -87,6 +98,12 @@ export class TaskDialogComponent implements OnInit {
         break;
       case 'add':
         result.taskData = this.taskForm.value;
+        break;
+      case 'edit':
+        result.taskData = this.taskEditForm.value;
+        break;
+      case 'delete':
+        result = true;
         break;
     }
 

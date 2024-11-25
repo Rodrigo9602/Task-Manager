@@ -62,24 +62,76 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Fecha de Conclusión</mat-label>
-            <input matInput [matDatepicker]="endPicker" formControlName="end_date" required>
+            <mat-label>Fecha Límite</mat-label>
+            <input matInput [matDatepicker]="endPicker" [min]="taskForm.get('start_date')" formControlName="end_date"
+                required>
             <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
             <mat-datepicker #endPicker></mat-datepicker>
             <mat-error *ngIf="taskForm.get('end_date')?.invalid">
-                Seleccione una fecha de conclusión
+                Fecha límite inválida
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">            
+        <mat-form-field appearance="fill">
             <mat-label>Seleccione al usuario</mat-label>
             <mat-select formControlName="userId">
                 <mat-option *ngFor="let user of users" [value]="user.id">
                     {{user.name}}
                 </mat-option>
-            </mat-select>            
+            </mat-select>
         </mat-form-field>
     </form>
+    }
+    @case ('edit') {
+    <form [formGroup]="taskEditForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre de la Tarea</mat-label>
+            <input matInput formControlName="name" required>
+            <mat-error *ngIf="taskEditForm.get('name')?.invalid">
+                El nombre de la tarea es obligatorio
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="description" rows="3"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha de Inicio</mat-label>
+            <input matInput [matDatepicker]="startPicker" formControlName="start_date" required>
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+            <mat-error *ngIf="taskEditForm.get('start_date')?.invalid">
+                Seleccione una fecha de inicio
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha Límite</mat-label>
+            <input matInput [matDatepicker]="endPicker" [min]="taskEditForm.get('start_date')"
+                formControlName="end_date" required>
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+            <mat-error *ngIf="taskEditForm.get('end_date')?.invalid">
+                Fecha límite inválida
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Seleccione el estado</mat-label>
+            <mat-select formControlName="state">
+                <mat-option [value]="'Pendiente'">Pendiente</mat-option>
+                <mat-option [value]="'En Proceso'">En proceso</mat-option>
+                <mat-option [value]="'Completada'">Completada</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    }
+    @case ('delete') {
+    <section>
+        <p>Estás seguro que deseas eliminar la tarea?</p>
+    </section>
     }
     }
 </app-dialog>

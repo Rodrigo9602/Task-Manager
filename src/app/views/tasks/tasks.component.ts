@@ -60,14 +60,14 @@ export class TasksComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {          
-           this._taskService.createTask(result.taskData, result.taskData.userId).subscribe({
-          next: () => {            
+      if (result) {
+        this._taskService.createTask(result.taskData, result.taskData.userId).subscribe({
+          next: () => {
             // Actualizar la lista de tareas y mostrar mensaje de éxito
             this.ngOnInit();
           },
           error: (e) => console.error(e)
-        });    
+        });
       }
     });
   }
@@ -82,11 +82,33 @@ export class TasksComponent implements OnInit {
         task: event,
         action: 'show'
       }
-    });    
+    });
   }
-  
+
   onEdit(event: any) {
-    console.log(event)
+    const dialogRef = this.dialog.open(TaskDialogComponent, {
+      width: '400px',
+      data: {
+        title: 'Editar tarea',
+        actionButtonLabel: 'Aceptar',
+        showCancelButton: true,
+        task: event,
+        action: 'edit'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this._taskService.updateTask(result.taskData.id, result.taskData).subscribe({
+          next: res => {
+            this.ngOnInit();
+          },
+          error: e => {
+            console.log(e)
+          }
+        })
+      }
+    });
   }
 
   onAssign(event: any) {
@@ -103,7 +125,7 @@ export class TasksComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result.userId) {        
+      if (result.userId) {
         this._taskService.assignTask(result.taskId, result.userId).subscribe({
           next: () => {
             // Actualizar la lista de tareas y mostrar mensaje de éxito
@@ -116,6 +138,27 @@ export class TasksComponent implements OnInit {
   }
 
   onDelete(event: any) {
-    console.log(event)
+    const dialogRef = this.dialog.open(TaskDialogComponent, {
+      width: '400px',
+      data: {
+        title: 'Eliminar tarea',
+        actionButtonLabel: 'Aceptar',
+        showCancelButton: true,        
+        action: 'delete'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this._taskService.deleteTask(event.id).subscribe({
+          next: res => {
+            this.ngOnInit();
+          },
+          error: e => {
+            console.log(e)
+          }
+        })
+      }
+    });
   }
 }

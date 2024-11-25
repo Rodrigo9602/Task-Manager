@@ -72,9 +72,11 @@ export class TableComponent implements OnInit {
 
     // Añadir la columna de acciones a las columnas mostradas
     this.displayedColumns = [...this.dataKeys.map(col => col.toLowerCase().replace(/ /g, '_')), 'actions'];
+    
 
     this.dataInput?.subscribe(items => {
       this.data = items;
+      console.log(this.data)
       this.dataSource = new MatTableDataSource<userPriv | Task>(this.data);
       this.dataSource.paginator = this.paginator;
     });
