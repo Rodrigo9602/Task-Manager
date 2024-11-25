@@ -1,6 +1,6 @@
 import { Component, computed, OnInit, Signal } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { SidenavComponent } from '../../components/sidenav/sidenav.component';
+import { NavMobComponent } from '../../components/navbar/nav-mob/nav-mob.component';
 import { ThemeService } from '../../services/mode/mode.service';
 import { AuthService } from '../../services/security/security.service';
 import { NavItems } from '../../interfaces/nav-items';
@@ -11,7 +11,7 @@ import { userIcon, taskIcon } from '../../../../public/icons/icon';
 @Component({
   selector: 'app-base-layout',
   standalone: true,
-  imports: [NavbarComponent, SidenavComponent, RouterOutlet],
+  imports: [NavbarComponent, NavMobComponent, RouterOutlet],
   templateUrl: './base-layout.component.html',
   styleUrl: './base-layout.component.scss'
 })

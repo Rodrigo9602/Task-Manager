@@ -1,0 +1,13 @@
+<nav class="navbar">
+    <section class="nav-content">
+        @for (item of NavItems(); track $index) {
+        <a [routerLink]=item.link [routerLinkActive]="['active']" class="nav-icon-link">
+            <span [innerHTML]="item.icon | sanitazer"></span>
+        </a>
+        }
+        <base-theme-toggle></base-theme-toggle>
+        <button type="button" class="btn" (click)="logout()">
+            <span [innerHTML]="LogOutIcon() | sanitazer"></span>
+        </button>        
+    </section>
+</nav>

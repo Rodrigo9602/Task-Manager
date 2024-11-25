@@ -1,16 +1,10 @@
-<app-table
-  [columns]="columns"
-  [dataKeys]="dataKeys"
-  [dataInput]="tasksData$"
-  [dataType]="'task'"
-  (viewItem)="onDetails($event)"
-  (editItem)="onEdit($event)"
-  (deleteItem)="onDelete($event)"
-  (viewUserDetails)="onUsersDetails($event)"
-  >
+<app-table [columns]="columns" [dataKeys]="dataKeys" [dataInput]="tasksData$" [dataType]="'task'"
+  (addTask)="onAddTask()" (viewItem)="onDetails($event)" (editItem)="onEdit($event)" (deleteItem)="onDelete($event)"
+  (assignTask)="onAssign($event)">
 </app-table>
 <section class="mobile-component">
   @for (item of tasksData; track $index) {
-    <app-task-card [taskData]="item"></app-task-card>
+  <app-task-card [taskData]="item" (viewItem)="onDetails($event)" (editItem)="onEdit($event)"
+    (deleteItem)="onDelete($event)" (assignTask)="onAssign($event)"></app-task-card>
   }
 </section>

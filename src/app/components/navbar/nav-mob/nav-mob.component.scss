@@ -1,0 +1,31 @@
+.navbar {
+    display: none;
+    width: 100%;
+    background-color: var(--items-bg);    
+}
+
+.nav-content {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;    
+}
+
+.nav-icon-link {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 2px 0 0;
+    border-radius: 10px;
+    transition: all ease 0.3s;
+}
+
+
+@media (max-width:760px) {
+    .navbar {
+        display: flex;
+    }
+}

@@ -1,24 +1,21 @@
 import { Component, computed, Input, OnInit, Signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ThemeToggleComponent } from '../theme-toggle/theme-toggle.component';
-import { SanitazerPipe } from '../../pipes/sanitazer.pipe';
-
-import { NavItems } from '../../interfaces/nav-items';
-import { logoutIcon } from '../../../../public/icons/icon';
-import { ThemeService } from '../../services/mode/mode.service';
-import { AuthService } from '../../services/security/security.service';
+import { NavItems } from '../../../interfaces/nav-items';
+import { logoutIcon } from '../../../../../public/icons/icon';
+import { ThemeService } from '../../../services/mode/mode.service';
+import { AuthService } from '../../../services/security/security.service';
 import { Router } from '@angular/router';
-
+import { ThemeToggleComponent } from '../../theme-toggle/theme-toggle.component';
+import { SanitazerPipe } from '../../../pipes/sanitazer.pipe';
 
 @Component({
-  selector: 'task-navbar',
+  selector: 'task-nav-mob',
   standalone: true,
   imports: [RouterModule, SanitazerPipe, ThemeToggleComponent],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  templateUrl: './nav-mob.component.html',
+  styleUrl: './nav-mob.component.scss'
 })
-export class NavbarComponent implements OnInit{
-  @Input() NavHeader: String = '';
+export class NavMobComponent implements OnInit {  
   @Input() NavItems: Signal<Array<NavItems>> = computed(() => []);
   
   public isDarkMode = computed(() => this._themeService.isDarkMode());

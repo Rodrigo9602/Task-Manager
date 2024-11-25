@@ -1,0 +1,36 @@
+.modal-wrapper {
+    background-color: var(--items-bg);
+    overflow: hidden;
+    
+    header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 10px;
+
+        .dialog-title {
+            font-family: 'poppins';
+            font-size: 20px;
+        }
+    }
+}
+
+
+mat-dialog-content {
+    min-height: 100px;
+    padding: 20px 0;
+}
+
+mat-dialog-actions {
+    padding: 20px 0;    
+}
+
+.modal-actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    padding: 0 5px;
+}

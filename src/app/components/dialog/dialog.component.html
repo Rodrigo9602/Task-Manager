@@ -1,0 +1,20 @@
+<section class="modal-wrapper">
+    <header>
+        <h2 class="dialog-title">{{data.title}}</h2>
+    </header>
+   
+    <mat-dialog-content class="mat-typography">
+        <ng-content></ng-content>
+    </mat-dialog-content>
+   
+    <mat-dialog-actions align="end">
+        <section class="modal-actions">
+            <button class="btn-primary" (click)="onAccept()" cdkFocusInitial>
+                {{data.actionButtonLabel}}
+            </button>
+            @if(data.showCancelButton) {
+                <button class="btn-cancel" (click)="onCancel()">Cancelar</button>
+            }            
+        </section>
+    </mat-dialog-actions>
+</section>

@@ -1,5 +1,5 @@
 // table.component.ts
-import { AfterViewInit, Component, Input, OnInit, ViewChild, Output, EventEmitter, Signal, computed } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, Output, EventEmitter, Signal, computed } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -7,6 +7,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../../../services/security/security.service';
 import { userPriv } from '../../../interfaces/user';
 import { Task } from '../../../interfaces/task';
 import { Observable } from 'rxjs';
@@ -39,7 +40,7 @@ interface TableAction {
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
-export class TableComponent implements OnInit, AfterViewInit {
+export class TableComponent implements OnInit {
   private isDarkMode = computed(() => this._themeService.isDarkMode());
   public ActionIcon: Signal<string> = computed(() => this.isDarkMode() ? actionIcon('#ffffff') : actionIcon('#000000'));
 
@@ -48,10 +49,10 @@ export class TableComponent implements OnInit, AfterViewInit {
   @Input() dataInput: Observable<userPriv[] | Task[]> | undefined;
   @Input() dataType: 'user' | 'task' = 'task';
 
+  @Output() addTask = new EventEmitter();
   @Output() editItem = new EventEmitter<userPriv | Task>();
   @Output() deleteItem = new EventEmitter<userPriv | Task>();
   @Output() assignTask = new EventEmitter<userPriv>();
-  @Output() viewUserDetails = new EventEmitter<Task>();
   @Output() viewItem = new EventEmitter<userPriv | Task>();
 
   public data: userPriv[] | Task[] = [];
@@ -61,7 +62,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private _themeService: ThemeService) {
+  constructor(private _themeService: ThemeService, private _authService: AuthService) {
     this.dataSource = new MatTableDataSource<userPriv | Task>([]);
   }
 
@@ -75,11 +76,12 @@ export class TableComponent implements OnInit, AfterViewInit {
     this.dataInput?.subscribe(items => {
       this.data = items;
       this.dataSource = new MatTableDataSource<userPriv | Task>(this.data);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
   private setupActions() {
-    if (this.dataType === 'user') {
+    if(this._authService.isAdmin()) {
       this.actions = [
         { icon: 'visibility', label: 'Ver detalles', action: 'view' },
         { icon: 'edit', label: 'Editar', action: 'edit' },
@@ -89,11 +91,10 @@ export class TableComponent implements OnInit, AfterViewInit {
     } else {
       this.actions = [
         { icon: 'visibility', label: 'Ver detalles', action: 'view' },
-        { icon: 'edit', label: 'Editar', action: 'edit' },
-        { icon: 'person', label: 'Ver usuario asignado', action: 'view-user' },
+        { icon: 'edit', label: 'Editar', action: 'edit' },      
         { icon: 'delete', label: 'Eliminar', action: 'delete' }
       ];
-    }
+    }    
   }
 
   handleAction(action: string, element: userPriv | Task) {
@@ -108,20 +109,13 @@ export class TableComponent implements OnInit, AfterViewInit {
         this.deleteItem.emit(element);
         break;
       case 'assign':
-        if (this.dataType === 'user') {
-          this.assignTask.emit(element as userPriv);
-        }
-        break;
-      case 'view-user':
-        if (this.dataType === 'task') {
-          this.viewUserDetails.emit(element as Task);
-        }
+        this.assignTask.emit(element as userPriv);
         break;
     }
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  onAddTask() {
+    this.addTask.emit();
   }
 
   applyFilter(event: Event) {

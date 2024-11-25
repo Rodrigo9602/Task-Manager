@@ -1,7 +1,7 @@
 <main class="main-layout">
-    <task-navbar [NavHeader]="'Dashboard'" ></task-navbar>
-    <tasks-sidenav [NavItems]="NavItemsArray"></tasks-sidenav>
+    <task-navbar [NavHeader]="'Dashboard'" [NavItems]="NavItemsArray"></task-navbar>   
     <section class="components">
         <router-outlet></router-outlet>
     </section>    
+    <task-nav-mob [NavItems]="NavItemsArray"></task-nav-mob>
 </main>

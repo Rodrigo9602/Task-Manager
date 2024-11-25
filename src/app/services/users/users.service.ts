@@ -32,8 +32,7 @@ export class UserService {
 
   // Obtener todos los usuarios (solo admin)
   getAllUsers(): Observable<User[]> {
-    try {
-      this.verifyAdminAccess();
+    try {      
       return this.http.get<User[]>(
         `${this.API_URL}/users`,
         { headers: this.headers }
@@ -45,8 +44,7 @@ export class UserService {
 
   // Obtener un usuario específico (solo admin)
   getUser(userId: number): Observable<User> {
-    try {
-      this.verifyAdminAccess();
+    try {      
       return this.http.get<User>(
         `${this.API_URL}/users/${userId}`,
         { headers: this.headers }

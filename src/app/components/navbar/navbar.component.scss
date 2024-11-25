@@ -27,9 +27,21 @@
     gap: 20px;
 }
 
+.nav-link {
+    padding: 5px 10px;
+    border-radius: 12px;
+    transition: all ease 0.3s;
+}
+
 @media (max-width:420px) {
     .nav-content {
-        gap: 20px;
+        gap: 20px;        
+    }    
+}
+
+@media (max-width: 760px) {
+    .nav-content {
+        display: none;
     }
 }
 

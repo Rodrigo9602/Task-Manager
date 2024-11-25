@@ -1,0 +1,35 @@
+.state-sec {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.user-data {
+    width: 90%;
+    border: 1px solid var(--text-color);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.user-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;    
+    gap: 20px;
+}
+
+.user-email {   
+    margin-top: -10px; 
+    color: #888888;
+}

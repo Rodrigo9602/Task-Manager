@@ -36,7 +36,53 @@
       "end_date": "2024-11-28T18:30:00Z",
       "state": "Pendiente",
       "start_date": "2024-11-24T10:30:00Z",
-      "id": 1
+      "id": 1,
+      "userId": 2
+    },
+    {
+      "name": "Navbar",
+      "description": "Crear componente de navegación para vista Desktop y Mobile",
+      "start_date": "2024-11-25T14:09:13.714Z",
+      "end_date": "2024-11-27T05:00:00.000Z",
+      "state": "Pendiente",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "name": "Interceptores y Guardianes",
+      "description": "Implementar interceptores de peticiones http y guardianes de rutas",
+      "start_date": "2024-11-25T14:11:11.596Z",
+      "end_date": "2024-11-25T05:00:00.000Z",
+      "state": "Pendiente",
+      "id": 3,
+      "userId": 1
+    },
+    {
+      "name": "Temas",
+      "description": "Configuración de los temas claros y oscuros en la aplicación",
+      "start_date": "2024-11-25T14:25:17.020Z",
+      "end_date": "2024-11-23T05:00:00.000Z",
+      "state": "Pendiente",
+      "userId": 2,
+      "id": 4
+    },
+    {
+      "name": "Selector de Temas",
+      "description": "Crear botón tipo switch para conmutar el tema de la aplicación",
+      "start_date": "2024-11-25T14:31:37.375Z",
+      "end_date": "2024-11-23T05:00:00.000Z",
+      "state": "Pendiente",
+      "userId": 2,
+      "id": 5
+    },
+    {
+      "name": "Tabla",
+      "description": "Crear componente dinámico para el registro de datos de usuarios y tareas en formato de tabla",
+      "start_date": "2024-11-25T14:33:26.369Z",
+      "end_date": "2024-11-23T05:00:00.000Z",
+      "state": "Pendiente",
+      "userId": 2,
+      "id": 6
     }
   ]
 }

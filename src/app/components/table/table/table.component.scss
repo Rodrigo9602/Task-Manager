@@ -70,6 +70,18 @@ mat-paginator {
   text-align: center;
 }
 
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+
+  .btn-add {
+    margin-top: -35px;
+    max-width: 200px;
+  }
+}
+
 
 /* Estilos responsive */
 @media screen and (max-width: 600px) {

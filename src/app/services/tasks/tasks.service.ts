@@ -31,6 +31,7 @@ createTask(taskData: Omit<Task, 'id' | 'start_date' | 'state' | 'userId'>, assig
     ...taskData,
     start_date: new Date(),
     state: 'Pendiente',
+    userId: undefined,
   };
 
   // Si es admin y proporciona un userId, asignamos la tarea
@@ -39,10 +40,12 @@ createTask(taskData: Omit<Task, 'id' | 'start_date' | 'state' | 'userId'>, assig
   } else if (currentUser.role === 'Admin' && !assignedUserId) {
     // Si es admin pero no proporciona userId, la tarea queda sin asignar
     newTask.userId = undefined;
-  } else if (currentUser.role !== 'Admin' && assignedUserId) {
+  } else if (currentUser.role !== 'Admin' && assignedUserId === currentUser.id) {
+    newTask.userId = assignedUserId;
+  } else if (currentUser.role !== 'Admin' && assignedUserId !== currentUser.id) {
     // Si un usuario normal intenta asignar la tarea, rechazamos la operación
     return throwError(() => new Error('No tienes permisos para asignar tareas'));
-  }
+  }  
 
   return this.http.post<Task>(
     `${this.API_URL}/tasks`,

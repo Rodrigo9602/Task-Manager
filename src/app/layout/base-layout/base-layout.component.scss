@@ -7,36 +7,32 @@
     grid-template-columns: auto 1fr;
     height: 100vh;
     width: 100%;
-    position: relative;
+    row-gap: 50px;    
   }
   
   task-navbar {
     grid-area: navbar;
     width: 100%;
   }
-  
-  tasks-sidenav {
-    position: absolute;
-    left:0;
-    top:60px;
-    z-index: 200;
-    width: 20%; 
-       
+
+  task-nav-mob {    
+    grid-area: nav-mob;
+    width: 100%;
   }
   
-  .components {
+  .components {    
     grid-area: content;
-    width: 100%;
-    overflow: auto;
+    width: 100%;    
     display: flex;
     align-items: center;
-    justify-content: center;   
-  }
+    justify-content: center;      
+  }  
 
-  
-
-  @media (max-width:420px) {
-    tasks-sidenav {
-      width: 35%;
+  @media (max-width:760px) {
+    .main-layout {
+      grid-template-areas: 
+      "navbar navbar"
+      "content content"
+      "nav-mob nav-mob";
     }
   }
