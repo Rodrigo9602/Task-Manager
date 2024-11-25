@@ -75,8 +75,7 @@ export class TableComponent implements OnInit {
     
 
     this.dataInput?.subscribe(items => {
-      this.data = items;
-      console.log(this.data)
+      this.data = items;      
       this.dataSource = new MatTableDataSource<userPriv | Task>(this.data);
       this.dataSource.paginator = this.paginator;
     });
@@ -85,14 +84,14 @@ export class TableComponent implements OnInit {
   private setupActions() {
     if(this._authService.isAdmin()) {
       this.actions = [
-        { icon: 'visibility', label: 'Ver detalles', action: 'view' },
+        { icon: 'visibility', label: this.dataType === 'user' ? 'Ver tareas': 'Ver detalles', action: 'view' },
         { icon: 'edit', label: 'Editar', action: 'edit' },
         { icon: 'assignment', label: 'Asignar tarea', action: 'assign' },
         { icon: 'delete', label: 'Eliminar', action: 'delete' }
       ];
     } else {
       this.actions = [
-        { icon: 'visibility', label: 'Ver detalles', action: 'view' },
+        { icon: 'visibility', label: this.dataType === 'user' ? 'Ver tareas': 'Ver detalles', action: 'view' },
         { icon: 'edit', label: 'Editar', action: 'edit' },      
         { icon: 'delete', label: 'Eliminar', action: 'delete' }
       ];

@@ -1,1 +1,10 @@
-<p>user-dialog works!</p>
+<app-dialog (accept)="onAccept()" (cancel)="onCancel()">
+    @switch (data.action) {
+        @case ('show') {
+            
+        }
+        @case ('edit') {}
+        @case ('assign') {}
+        @case ('delete') {}
+    }
+</app-dialog>

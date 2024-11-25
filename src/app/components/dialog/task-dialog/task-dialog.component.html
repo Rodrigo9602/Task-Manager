@@ -63,7 +63,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Fecha Límite</mat-label>
-            <input matInput [matDatepicker]="endPicker" [min]="taskForm.get('start_date')" formControlName="end_date"
+            <input matInput [matDatepicker]="endPicker" [min]="taskForm.get('start_date')?.value" formControlName="end_date"
                 required>
             <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
             <mat-datepicker #endPicker></mat-datepicker>
@@ -109,7 +109,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Fecha Límite</mat-label>
-            <input matInput [matDatepicker]="endPicker" [min]="taskEditForm.get('start_date')"
+            <input matInput [matDatepicker]="endPicker" [min]="taskEditForm.get('start_date')?.value"
                 formControlName="end_date" required>
             <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
             <mat-datepicker #endPicker></mat-datepicker>
