@@ -161,7 +161,7 @@
       "description": "Implementar componente de alertas con opciones tipadas para mensajes de éxito, alerta y error",
       "start_date": "2024-11-26T05:00:00.000Z",
       "end_date": "2024-11-26T05:00:00.000Z",
-      "state": "En Proceso",
+      "state": "Completada",
       "userId": 1,
       "id": 15
     },
@@ -179,8 +179,8 @@
       "description": "Implementar alertas en los componentes principales",
       "start_date": "2024-11-27T05:00:00.000Z",
       "end_date": "2024-11-27T05:00:00.000Z",
-      "state": "Pendiente",
-      "userId": 2,
+      "state": "En Proceso",
+      "userId": 1,
       "id": 17
     },
     {
@@ -188,7 +188,7 @@
       "description": "Revisar y modificar en caso de ser necesario los estilos de componentes en la aplicación",
       "start_date": "2024-11-27T05:00:00.000Z",
       "end_date": "2024-11-27T05:00:00.000Z",
-      "state": "Pendiente",
+      "state": "En Proceso",
       "userId": 3,
       "id": 18
     },
@@ -263,6 +263,24 @@
       "state": "Completada",
       "userId": 1,
       "id": 26
+    },
+    {
+      "name": "Testear componente de Alerta",
+      "description": "Testear componente de Alerta",
+      "start_date": "2024-11-26T05:00:00.000Z",
+      "end_date": "2024-11-26T05:00:00.000Z",
+      "state": "En Proceso",
+      "userId": 1,
+      "id": 27
+    },
+    {
+      "name": "Modificar servicio de usuarios",
+      "description": "Modificar las peticiones del servicio de usuarios para que devuelvan la respuesta de la petición",
+      "start_date": "2024-11-26T05:00:00.000Z",
+      "end_date": "2024-11-26T05:00:00.000Z",
+      "state": "Pendiente",
+      "userId": 1,
+      "id": 28
     }
   ]
 }

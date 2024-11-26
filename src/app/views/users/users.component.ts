@@ -12,6 +12,7 @@ import { UserDialogComponent } from '../../components/dialog/user-dialog/user-di
 import { MatDialog } from '@angular/material/dialog';
 import { Task } from '../../interfaces/task';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { Toast } from '../../components/alert/alert';
 
 @Component({
   selector: 'app-users',
@@ -98,11 +99,18 @@ export class UsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result?.user) {
         this._userService.updateUser(event.id, result.user).subscribe({
-          next: res => {
+          next: () => {
+            Toast.fire({
+              icon: 'success',
+              title: 'Usuario editado con éxito'
+            });
             this.ngOnInit();
           },
           error: e => {
-            console.log(e)
+            Toast.fire({
+              icon: 'error',
+              title: e.message,              
+            });
           }
         })
       }
@@ -124,11 +132,18 @@ export class UsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {      
       if (result?.assignedTask) {               
         this._taskService.assignTask(result.assignedTask, event.id).subscribe({
-          next: res => {
+          next: () => {
+            Toast.fire({
+              icon: 'success',
+              title: 'Tarea asignada'
+            });
             this.ngOnInit();
           },
           error: e => {
-            console.log(e)
+            Toast.fire({
+              icon: 'error',
+              title: e.message,              
+            });
           }
         })
       }
@@ -149,11 +164,18 @@ export class UsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {      
       if (result) {               
         this._userService.deleteUser(event.id).subscribe({
-          next: res => {
+          next: () => {
+            Toast.fire({
+              icon: 'success',
+              title: 'Usuario eliminado'
+            });
             this.ngOnInit();
           },
           error: e => {
-            console.log(e);
+            Toast.fire({
+              icon: 'error',
+              title: e.message,              
+            });
           }
         })
       }

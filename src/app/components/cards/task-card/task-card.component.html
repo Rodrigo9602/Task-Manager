@@ -2,12 +2,14 @@
     <section>
         <header class="task-card-header">
             <h1>{{taskData.name}}</h1>
-            <p class="date-p">{{taskData.start_date | date: 'dd/MM/yy'}} - {{taskData.end_date |  date: 'dd/MM/yy'}}</p>
+            <p class="date-p">{{taskData.start_date | date: 'dd/MM/yy'}} - {{taskData.end_date | date: 'dd/MM/yy'}}</p>
             <p class="state-p" [appStateColor]="taskData.state">{{taskData.state}}</p>
         </header>
     </section>
     <section class="task-card-body">
-        <p class="task-desc">{{taskData.description}}</p>        
+        <div class="desc-wrapper">
+            <p class="task-desc">{{taskData.description}}</p>
+        </div>        
         <button [matMenuTriggerFor]="menu" aria-label="Opciones" class="btn-primary">
             Acciones
         </button>

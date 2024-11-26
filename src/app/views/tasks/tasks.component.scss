@@ -7,6 +7,11 @@
     width: 100%;
 }
 
+mat-paginator {
+    background-color: var(--bg) !important;
+    color: var(--text-color) !important;  
+}
+
 @media (max-width: 760px) {
     app-table {
         display: none;

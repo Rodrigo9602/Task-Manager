@@ -12,6 +12,7 @@ import { Task } from '../../interfaces/task';
 import { BehaviorSubject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { User } from '../../interfaces/user';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { Toast } from '../../components/alert/alert';
 
 @Component({
   selector: 'app-tasks',
@@ -84,9 +85,19 @@ export class TasksComponent implements OnInit {
         this._taskService.createTask(result.taskData, result.taskData.userId).subscribe({
           next: () => {
             // Actualizar la lista de tareas y mostrar mensaje de éxito
+            Toast.fire({
+              icon: 'success',
+              title: 'Tarea añadida'
+            });
+            
             this.ngOnInit();
           },
-          error: (e) => console.error(e)
+          error: (e) => {
+            Toast.fire({
+              icon: 'error',
+              title: e.message,              
+            });
+          }
         });
       }
     });
@@ -120,11 +131,18 @@ export class TasksComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result?.taskData) {
         this._taskService.updateTask(result.taskData.id, result.taskData).subscribe({
-          next: res => {
+          next: () => {
+            Toast.fire({
+              icon: 'success',
+              title: 'Tarea editada'
+            });
             this.ngOnInit();
           },
           error: e => {
-            console.log(e)
+            Toast.fire({
+              icon: 'error',
+              title: e.message,              
+            });
           }
         })
       }
@@ -149,9 +167,18 @@ export class TasksComponent implements OnInit {
         this._taskService.assignTask(event.id, result.userId).subscribe({
           next: () => {
             // Actualizar la lista de tareas y mostrar mensaje de éxito
+            Toast.fire({
+              icon: 'success',
+              title: 'Tarea asignada'
+            });
             this.ngOnInit();
           },
-          error: (e) => console.error(e)
+          error: (e) => {
+            Toast.fire({
+              icon: 'error',
+              title: e.message,              
+            });
+          }
         });
       }
     });
@@ -171,11 +198,18 @@ export class TasksComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this._taskService.deleteTask(event.id).subscribe({
-          next: res => {
+          next: () => {
+            Toast.fire({
+              icon: 'success',
+              title: 'Tarea eliminada'
+            });            
             this.ngOnInit();
           },
-          error: e => {
-            console.log(e)
+          error: (e) => {
+            Toast.fire({
+              icon: 'error',
+              title: e.message,              
+            });
           }
         })
       }

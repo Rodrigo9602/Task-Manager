@@ -1,10 +1,14 @@
 .card {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 12px;
-    padding: 8px;
-    background-color: var(--items-bg);
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    display: flex;
-    flex-direction: column;
+  width: 300px;
+  background-color: var(--bg);
+  border: 1px solid var(--items-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  
+  &:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+  }
 }

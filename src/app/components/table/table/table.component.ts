@@ -1,5 +1,5 @@
 // table.component.ts
-import { Component, Input, OnInit, ViewChild, Output, EventEmitter, Signal, computed } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, Output, EventEmitter, Signal, computed, signal } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -13,7 +13,6 @@ import { Task } from '../../../interfaces/task';
 import { Observable } from 'rxjs';
 import { FormatDataPipe } from '../../../pipes/format-data.pipe';
 import { SanitazerPipe } from '../../../pipes/sanitazer.pipe';
-
 import { actionIcon } from '../../../../../public/icons/icon';
 import { ThemeService } from '../../../services/mode/mode.service';
 
@@ -56,6 +55,8 @@ export class TableComponent implements OnInit {
   @Output() viewItem = new EventEmitter<userPriv | Task>();
 
   public data: userPriv[] | Task[] = [];
+  
+
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<userPriv | Task>;
   actions: TableAction[] = [];
@@ -71,13 +72,12 @@ export class TableComponent implements OnInit {
     this.setupActions();
 
     // Añadir la columna de acciones a las columnas mostradas
-    this.displayedColumns = [...this.dataKeys.map(col => col.toLowerCase().replace(/ /g, '_')), 'actions'];
+    this.displayedColumns = [...this.dataKeys.map(col => col.toLowerCase().replace(/ /g, '_')), 'actions']; 
     
-
     this.dataInput?.subscribe(items => {
       this.data = items;      
       this.dataSource = new MatTableDataSource<userPriv | Task>(this.data);
-      this.dataSource.paginator = this.paginator;
+      this.dataSource.paginator = this.paginator;    
     });
   }
 
@@ -103,7 +103,7 @@ export class TableComponent implements OnInit {
       case 'view':
         this.viewItem.emit(element);
         break;
-      case 'edit':
+      case 'edit':        
         this.editItem.emit(element);
         break;
       case 'delete':
