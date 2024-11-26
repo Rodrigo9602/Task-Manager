@@ -1,10 +1,30 @@
 <app-dialog (accept)="onAccept()" (cancel)="onCancel()">
     @switch (data.action) {
-        @case ('show') {
-            
+    @case ('show') {
+    <section class="tasks-wrapper">
+        @if (tasks.length === 0) {
+            <div  class="no-task-msg">
+                <p>El usuario no cuenta con tareas asignadas</p>
+            </div>            
+        } @else {
+            @for (task of tasks; track $index) {
+                <article class="task-container">
+                    <section class="task-body">
+                        <p><strong>Título: </strong>{{task.name}}</p>
+                        <section class="state-sec">
+                            <p><strong>Estado:</strong></p>
+                            <p [appStateColor]="task.state"> {{task.state}}</p>
+                        </section>
+                        <p><strong>Fecha Inicio: </strong>{{task.start_date | date: ('dd/MM/yy')}}</p>
+                        <p><strong>Fecha Límite: </strong>{{task.end_date | date: ('dd/MM/yy')}}</p>
+                    </section>
+                </article>
+            }
         }
-        @case ('edit') {}
-        @case ('assign') {}
-        @case ('delete') {}
+    </section>
+    }
+    @case ('edit') {}
+    @case ('assign') {}
+    @case ('delete') {}
     }
 </app-dialog>

@@ -4,6 +4,8 @@ import { UserCardComponent } from '../../components/cards/user-card/user-card.co
 import { UserService } from '../../services/users/users.service';
 import { userPriv } from '../../interfaces/user';
 import { BehaviorSubject } from 'rxjs';
+import { UserDialogComponent } from '../../components/dialog/user-dialog/user-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-users',
@@ -17,7 +19,7 @@ export class UsersComponent implements OnInit {
   public dataKeys: Array<string> = ['id', 'Name', 'Email', 'Role'];
   usersData$ = new BehaviorSubject<userPriv[]>([]);
   public usersData: userPriv[] = [];
-  constructor(private _userService: UserService) { }
+  constructor(private _userService: UserService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this._userService.getAllUsers().subscribe({
@@ -31,7 +33,16 @@ export class UsersComponent implements OnInit {
     })
   }
   onDetails(event: any) {
-    console.log(event)
+    const dialogRef = this.dialog.open(UserDialogComponent, {
+      width: '400px',
+      data: {
+        title: 'Tareas Asignadas',
+        actionButtonLabel: 'Aceptar',
+        showCancelButton: false,  
+        user: event,      
+        action: 'show'
+      }
+    });
   }
   onEdit(event: any) {
     console.log(event)

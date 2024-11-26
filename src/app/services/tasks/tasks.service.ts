@@ -78,6 +78,26 @@ getTasks(): Observable<Task[]> {
   );
 }
 
+// Obtener las tareas asignadas a un usuario solo admin
+getUserTasks(userId:string): Observable<Task[]> {
+  const currentUser = this.authService.getCurrentUser();
+  
+  if (!currentUser || currentUser.role !== 'Admin') {
+    return throwError(() => new Error('No tienes permisos para ver tareas asignadas a otros usuarios'));
+  }
+  
+  let params = new HttpParams();
+  params = params.set('userId', userId);
+  
+  return this.http.get<Task[]>(
+    `${this.API_URL}/tasks`,
+    { 
+      headers: this.headers,
+      params: params
+    }
+  );
+}
+
 // Obtener tareas sin asignar (solo para Admin)
 getUnassignedTasks(): Observable<Task[]> {
   const currentUser = this.authService.getCurrentUser();

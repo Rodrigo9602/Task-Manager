@@ -6,25 +6,29 @@ import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DatePipe } from '@angular/common';
+import { StateColorDirective } from '../../../directives/state-color.directive';
 import { DialogComponent, DialogData } from '../dialog.component';
 import { UserService } from '../../../services/users/users.service';
 import { User } from '../../../interfaces/user';
+import { TaskService } from '../../../services/tasks/tasks.service';
+import { Task } from '../../../interfaces/task';
 
 
 @Component({
   selector: 'app-user-dialog',
   standalone: true,
-  imports: [DialogComponent, MatDialogModule, CommonModule, MatSelectModule, MatInputModule, ReactiveFormsModule],
+  imports: [DialogComponent, MatDialogModule, CommonModule, MatSelectModule, MatInputModule, ReactiveFormsModule, DatePipe, StateColorDirective],
   templateUrl: './user-dialog.component.html',
   styleUrl: './user-dialog.component.scss'
 })
 export class UserDialogComponent implements OnInit {
   dialogData!: DialogData;
   public user!: User;
-  public users: User[] = [];
   userEditForm!: FormGroup;
+  public tasks: Task[] = [];
 
   constructor(
+    private _taskService: TaskService,
     private _userService: UserService,
     private _authService: AuthService,
     private fb: FormBuilder,
@@ -39,11 +43,27 @@ export class UserDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userEditForm = this.fb.group({
-      id: [this.data.user.id],
-      name: [this.data.user.name, [Validators.required, Validators.minLength(3)]],
-      role: [this.data.user.role, Validators.required]
-    });
+    if (this.data.action === 'edit') {
+      this.userEditForm = this.fb.group({
+        id: [this.data.user.id],
+        email: [this.data.user.email],
+        password: [this.data.user.password],
+        name: [this.data.user.name, [Validators.required, Validators.minLength(3)]],
+        role: [this.data.user.role, Validators.required]
+      });
+    }
+
+
+    if (this.data.action === 'show') {
+      this._taskService.getUserTasks(this.data.user.id).subscribe({
+        next: res => {
+          this.tasks = res;
+        },
+        error: e => {
+          console.log(e);
+        }
+      })
+    }
   }
 
   onAccept(): void {
