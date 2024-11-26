@@ -138,6 +138,7 @@ export class TasksComponent implements OnInit {
         title: 'Asignar tarea',
         actionButtonLabel: 'Aceptar',
         showCancelButton: true,
+        selectedUser: event.userId,
         users: this.users,        
         action: 'assign'
       }

@@ -86,6 +86,10 @@ export class TaskDialogComponent implements OnInit {
         this.users = this.data.users;
       }
     }
+
+    if(this.data.action === 'assign') {
+      this.selectedUser.setValue(this.data.selectedUser);
+    }
   }
 
   // método para manejar el cierre del diálogo
