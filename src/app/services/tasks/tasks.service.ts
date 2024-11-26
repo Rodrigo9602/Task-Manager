@@ -1,7 +1,7 @@
 // TaskService actualizado
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, switchMap, throwError } from 'rxjs';
+import { map, Observable, switchMap, throwError } from 'rxjs';
 import { Task } from '../../interfaces/task';
 import { AuthService } from '../security/security.service';
 import { StateType } from '../../interfaces/task';
@@ -19,7 +19,7 @@ constructor(
 ) {}
 
 // Crear una nueva tarea
-createTask(taskData: Omit<Task, 'id' | 'start_date' | 'state' | 'userId'>, assignedUserId?: number): Observable<Task> {
+createTask(taskData: Omit<Task, 'id' | 'state' | 'userId'>, assignedUserId?: number): Observable<Task> {
   const currentUser = this.authService.getCurrentUser();
   
   if (!currentUser) {
@@ -28,20 +28,22 @@ createTask(taskData: Omit<Task, 'id' | 'start_date' | 'state' | 'userId'>, assig
 
   // Preparamos la tarea con el estado inicial "Pendiente"
   const newTask: Omit<Task, 'id'> = {
-    ...taskData,
-    start_date: new Date(),
+    ...taskData,    
     state: 'Pendiente',
-    userId: undefined,
+    userId: null,
   };
 
   // Si es admin y proporciona un userId, asignamos la tarea
   if (currentUser.role === 'Admin' && assignedUserId) {
-    newTask.userId = assignedUserId;
+    newTask['userId'] = assignedUserId;
   } else if (currentUser.role === 'Admin' && !assignedUserId) {
-    // Si es admin pero no proporciona userId, la tarea queda sin asignar
-    newTask.userId = undefined;
+    // Si es admin pero no proporciona userId, la tarea queda sin asignar    
+    newTask['userId'] = null;
+  } else if (currentUser.role !== 'Admin' && !assignedUserId) {
+    // No es adminy no proporciona userId, la tarea se le asigna automaticamente 
+    newTask['userId'] = currentUser.id;
   } else if (currentUser.role !== 'Admin' && assignedUserId === currentUser.id) {
-    newTask.userId = assignedUserId;
+    newTask['userId'] = assignedUserId;
   } else if (currentUser.role !== 'Admin' && assignedUserId !== currentUser.id) {
     // Si un usuario normal intenta asignar la tarea, rechazamos la operación
     return throwError(() => new Error('No tienes permisos para asignar tareas'));
@@ -106,10 +108,14 @@ getUnassignedTasks(): Observable<Task[]> {
     return throwError(() => new Error('No tienes permisos para ver tareas sin asignar'));
   }
 
-  // En json-server, podemos usar el parámetro userId_like=null para obtener tareas sin asignar
+  // En json-server, podemos usar el parámetro userId=null para obtener tareas sin asignar
   return this.http.get<Task[]>(
-    `${this.API_URL}/tasks?userId_like=null`,
+    `${this.API_URL}/tasks`,
     { headers: this.headers }
+  ).pipe(
+    map(tasks =>{       
+      return tasks.filter(task => task.userId === null)
+    })
   );
 }
 

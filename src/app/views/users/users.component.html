@@ -1,17 +1,21 @@
-<app-table
-  [columns]="columns"
-  [dataKeys]="dataKeys"
-  [dataInput]="usersData$"
-  [dataType]="'user'"
-  (viewItem)="onDetails($event)"
-  (editItem)="onEdit($event)"
-  (deleteItem)="onDelete($event)"
-  (assignTask)="onAssignTask($event)"
-  ></app-table>
+<app-table [columns]="columns" [dataKeys]="dataKeys" [dataInput]="usersData$" [dataType]="'user'"
+  (viewItem)="onDetails($event)" (editItem)="onEdit($event)" (deleteItem)="onDelete($event)"
+  (assignTask)="onAssignTask($event)"></app-table>
 
-  <section class="mobile-component">
-    @for (item of usersData; track $index) {
-      <app-user-card [userData]="item"></app-user-card>
-    }
-  </section>
-  
+<section class="mobile-component">
+  <mat-form-field appearance="outline" class="mobile-filter">
+    <mat-label>Filtrar usuarios</mat-label>
+    <input matInput 
+           (keyup)="onFilterInput($event)"
+           placeholder="Buscar usuarios">
+  </mat-form-field>
+
+  @for (item of getPaginatedUsers(); track $index) {
+  <app-user-card [userData]="item" (viewItem)="onDetails($event)" (editItem)="onEdit($event)"
+    (deleteItem)="onDelete($event)" (assignTask)="onAssignTask($event)"></app-user-card>
+  }
+
+  <mat-paginator [length]="filteredUsersData.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    (page)="handlePageEvent($event)" aria-label="Selecciona página de usuarios">
+  </mat-paginator>
+</section>

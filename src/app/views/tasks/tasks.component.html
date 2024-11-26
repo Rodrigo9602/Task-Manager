@@ -3,8 +3,18 @@
   (assignTask)="onAssign($event)">
 </app-table>
 <section class="mobile-component">
-  @for (item of tasksData; track $index) {
+  <mat-form-field appearance="outline" class="mobile-filter">
+    <mat-label>Filtrar tareas</mat-label>
+    <input matInput 
+           (keyup)="onFilterInput($event)"
+           placeholder="Buscar tareas">
+  </mat-form-field>
+
+  @for (item of getPaginatedTasks(); track $index) {
   <app-task-card [taskData]="item" (viewItem)="onDetails($event)" (editItem)="onEdit($event)"
     (deleteItem)="onDelete($event)" (assignTask)="onAssign($event)"></app-task-card>
   }
+  <mat-paginator [length]="filteredTasksData.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    (page)="handlePageEvent($event)" aria-label="Selecciona página de tareas">
+  </mat-paginator>
 </section>

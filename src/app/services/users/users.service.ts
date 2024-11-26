@@ -55,7 +55,7 @@ export class UserService {
   }
 
   // Editar información del usuario (solo admin)
-  updateUser(userId: number, userData: Partial<Omit<User, 'id' | 'password'>>): Observable<User> {
+  updateUser(userId: number, userData: Partial<Omit<User, 'id' | 'password'>>): Observable<User> {    
     try {
       this.verifyAdminAccess();
       return this.http.patch<User>(

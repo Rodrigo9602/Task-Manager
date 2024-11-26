@@ -26,6 +26,7 @@ export class UserDialogComponent implements OnInit {
   public user!: User;
   userEditForm!: FormGroup;
   public tasks: Task[] = [];
+  public taskSelected = new FormControl(null);
 
   constructor(
     private _taskService: TaskService,
@@ -44,10 +45,8 @@ export class UserDialogComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data.action === 'edit') {
-      this.userEditForm = this.fb.group({
-        id: [this.data.user.id],
-        email: [this.data.user.email],
-        password: [this.data.user.password],
+      this.userEditForm = this.fb.group({        
+        email: [this.data.user.email, Validators.email],        
         name: [this.data.user.name, [Validators.required, Validators.minLength(3)]],
         role: [this.data.user.role, Validators.required]
       });
@@ -74,11 +73,13 @@ export class UserDialogComponent implements OnInit {
 
     switch (this.data.action) {
       case 'assign':
-
+        if(this.taskSelected.value) {
+          result.assignedTask = this.taskSelected.value;
+        }       
         break;
       case 'edit':
-        result.userData = this.userEditForm.value;
-        break;
+        result.user = this.userEditForm.value;
+        break;      
       case 'delete':
         result = true;
         break;

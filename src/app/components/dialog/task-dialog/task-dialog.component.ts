@@ -44,25 +44,29 @@ export class TaskDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.taskForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      description: [''],
-      start_date: [null, Validators.required],
-      end_date: [null, Validators.required],
-      state: ['Pendiente', Validators.required],
-      userId: [''],
-    });
-
-    this.taskEditForm = this.fb.group({
-      id: [this.data.task.id],
-      name: [this.data.task.name, [Validators.required, Validators.minLength(3)]],
-      description: [this.data.task.description, Validators.required],
-      start_date: [this.data.task.start_date, Validators.required],
-      end_date: [this.data.task.end_date, Validators.required],
-      state: [this.data.task.state, Validators.required],
-      user: [this.data.task.userId]
-    })
+    if(this.data.action === 'add') {
+      this.taskForm = this.fb.group({
+        name: ['', [Validators.required, Validators.minLength(3)]],
+        description: [''],
+        start_date: [null, Validators.required],
+        end_date: [null, Validators.required],
+        state: ['Pendiente', Validators.required],
+        userId: [''],
+      });
+    }
+    
+    if(this.data.action === 'edit') {
+      this.taskEditForm = this.fb.group({
+        id: [this.data.task.id],
+        name: [this.data.task.name, [Validators.required, Validators.minLength(3)]],
+        description: [this.data.task.description, Validators.required],
+        start_date: [this.data.task.start_date, Validators.required],
+        end_date: [this.data.task.end_date, Validators.required],
+        state: [this.data.task.state, Validators.required],
+        userId: [this.data.task.userId]
+      })
+    }
+    
     
     if (this.data.action === 'show' && this.data.task.userId) {
       this._userService.getUser(this.data.task.userId).subscribe({

@@ -2,82 +2,267 @@
   "users": [
     {
       "email": "admin@admin.com",
-      "password": "$2a$10$icS9Wl2BkYyYw2Sne.UDJekSxQN2Ms8luGbDYmJvOkAu3vbbl17E6",
+      "password": "$2a$10$dum80ZbHyMnOjenJ6BU9Yevj3KvRZcvW3K8ww70xcJB4IqgI22.9a",
       "name": "Admin",
       "role": "Admin",
       "id": 1
     },
     {
-      "email": "user@user.com",
-      "password": "$2a$10$AIsMa0ZEh/et6.Sue6f3iezekyQf/OFWOhTcgidIi7l.vhD5rOAxG",
-      "name": "User",
+      "email": "minion+1@user.com",
+      "password": "$2a$10$pVvoQWxnk3yHBoIERPKUmeet3AwOILnAA3lyeswkuGkPntGCQvb5C",
+      "name": "Kevin",
       "role": "User",
       "id": 2
     },
     {
-      "email": "user+2@gmail.com",
-      "password": "$2a$10$PO8wLzkDU7/hNPSy1GsON.QSIsp90dw2Z1HDDPiyyujhB3aoNmmxm",
-      "name": "User 2",
+      "email": "minion+2@user.com",
+      "password": "$2a$10$AmRtQCWvSsoiUNqQ4shHQeHP9Q4fBwcjNVR/jMzSOLyLqEAx0EVie",
+      "name": "Stuart",
       "role": "User",
       "id": 3
     },
     {
-      "email": "user+3@gmail.com",
-      "password": "$2a$10$vCpbRDXwcnteFV3poyhRwu7vLkN6sUIRY6S392rV/K5m61kTWx5Qm",
-      "name": "User 3",
+      "email": "minion+3@gmail.com",
+      "password": "$2a$10$1tHR74haeMSw3buhGUb5/OlKQlGwr./v0cmFMSTo/uuyRZhrZ4m.6",
+      "name": "Carl",
       "role": "User",
       "id": 4
     }
   ],
   "tasks": [
     {
-      "name": "Probar endpoints de la API",
-      "description": "Probar que cada endpoint funcione como se espera y que se cumplan las reglas de acceso",
-      "end_date": "2024-11-28T18:30:00Z",
-      "state": "Completada",
-      "start_date": "2024-11-24T10:30:00Z",
-      "id": 1,
-      "userId": 2,
-      "user": 2
-    },
-    {
-      "name": "Navbar",
-      "description": "Crear componente de navegación para vista Desktop y Mobile",
-      "start_date": "2024-11-25T14:09:13.714Z",
-      "end_date": "2024-11-27T05:00:00.000Z",
+      "name": "Instalar dependencias",
+      "description": "Instalar dependencias de trabajo",
+      "start_date": "2024-11-23T05:00:00.000Z",
+      "end_date": "2024-11-23T05:00:00.000Z",
       "state": "Completada",
       "userId": 1,
-      "id": 2,
-      "user": 1
+      "id": 1
     },
     {
-      "name": "Interceptores y Guardianes",
-      "description": "Implementar interceptores de peticiones http y guardianes de rutas",
-      "start_date": "2024-11-25T14:11:11.596Z",
-      "end_date": "2024-11-25T05:00:00.000Z",
-      "state": "Pendiente",
-      "id": 3,
-      "userId": 1
+      "name": "Configurar guardianes e interceptores",
+      "description": "Configurar guardianes de rutas e interceptores de peticiones y errores",
+      "start_date": "2024-11-23T05:00:00.000Z",
+      "end_date": "2024-11-23T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 2
     },
     {
-      "name": "Temas",
-      "description": "Configuración de los temas claros y oscuros en la aplicación",
-      "start_date": "2024-11-25T14:25:17.020Z",
-      "end_date": "2024-11-29T05:00:00.000Z",
-      "state": "Pendiente",
-      "userId": 2,
-      "id": 4,
-      "user": 2
+      "name": "Crear servicios",
+      "description": "Crear servicios para el manejo de los usuarios y tareas",
+      "start_date": "2024-11-23T05:00:00.000Z",
+      "end_date": "2024-11-23T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 3
     },
     {
-      "name": "Tabla",
-      "description": "Crear componente dinámico para el registro de datos de usuarios y tareas en formato de tabla",
-      "start_date": "2024-11-25T14:33:26.369Z",
+      "name": "Crear páginas y rutas",
+      "description": "Crear las páginas principales de la app, así como las rutas de acceso, empleando los guardianes de ruta.",
+      "start_date": "2024-11-23T05:00:00.000Z",
+      "end_date": "2024-11-23T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "name": "Crear layout base",
+      "description": "Implementar layout responsive",
+      "start_date": "2024-11-23T05:00:00.000Z",
+      "end_date": "2024-11-23T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "name": "Crear componente navbar",
+      "description": "Crear componente de navegación e incorporar opciones para el manejo de los temas y el cierre de sesión",
+      "start_date": "2024-11-23T05:00:00.000Z",
+      "end_date": "2024-11-23T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 6
+    },
+    {
+      "name": "Configurar formularios de registro e inicio",
+      "description": "Configurar formularios de registro e inicio de sesión con sus respectivas validaciones",
+      "start_date": "2024-11-23T05:00:00.000Z",
+      "end_date": "2024-11-23T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 7
+    },
+    {
+      "name": "Crear componente table",
+      "description": "Crear un componente en formato tabla que permita actualizar dinámicamente datos de tipo usuario y de tipo tarea ",
+      "start_date": "2024-11-24T05:00:00.000Z",
+      "end_date": "2024-11-24T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 8
+    },
+    {
+      "name": "Crear componente de filtrado",
+      "description": "Implementar componente de filtrado e incorporar dicha funcionalidad en el componente table",
+      "start_date": "2024-11-24T05:00:00.000Z",
+      "end_date": "2024-11-24T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 9
+    },
+    {
+      "name": "Establecer manejo de opciones",
+      "description": "Establecer manejo de opciones en las tablas renderizadas con los datos de usuarios y de tareas",
+      "start_date": "2024-11-24T05:00:00.000Z",
+      "end_date": "2024-11-24T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 10
+    },
+    {
+      "name": "Validar accesos a rutas y funciones",
+      "description": "Validar accesos a rutas dentro de la aplicación y a funcionalidades propias de cada rol",
+      "start_date": "2024-11-24T05:00:00.000Z",
+      "end_date": "2024-11-24T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 11
+    },
+    {
+      "name": "Crear componente modal",
+      "description": "Implementar un componente modal básico",
+      "start_date": "2024-11-24T05:00:00.000Z",
+      "end_date": "2024-11-24T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 12
+    },
+    {
+      "name": "Crear modal de tareas",
+      "description": "Implementar modal para el manejo de las opciones existentes en la tabla de tareas",
+      "start_date": "2024-11-24T05:00:00.000Z",
+      "end_date": "2024-11-24T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 13
+    },
+    {
+      "name": "Crear modal de usuarios",
+      "description": "Crear modal para el manejo de las opciones existentes en el panel de usuarios",
+      "start_date": "2024-11-24T05:00:00.000Z",
+      "end_date": "2024-11-24T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 14
+    },
+    {
+      "name": "Crear componente de alertas",
+      "description": "Implementar componente de alertas con opciones tipadas para mensajes de éxito, alerta y error",
+      "start_date": "2024-11-26T05:00:00.000Z",
       "end_date": "2024-11-26T05:00:00.000Z",
       "state": "Pendiente",
+      "userId": 1,
+      "id": 15
+    },
+    {
+      "name": "Configurar manejo de errores",
+      "description": "Configurar manejo de errores en los componentes principales",
+      "start_date": "2024-11-27T05:00:00.000Z",
+      "end_date": "2024-11-27T05:00:00.000Z",
+      "state": "Pendiente",
       "userId": 2,
-      "id": 6,
-      "user": 2
+      "id": 16
+    },
+    {
+      "name": "Implementar alertas",
+      "description": "Implementar alertas en los componentes principales",
+      "start_date": "2024-11-27T05:00:00.000Z",
+      "end_date": "2024-11-27T05:00:00.000Z",
+      "state": "Pendiente",
+      "userId": 2,
+      "id": 17
+    },
+    {
+      "name": "Revisar estilos",
+      "description": "Revisar y modificar en caso de ser necesario los estilos de componentes en la aplicación",
+      "start_date": "2024-11-27T05:00:00.000Z",
+      "end_date": "2024-11-27T05:00:00.000Z",
+      "state": "Pendiente",
+      "userId": 3,
+      "id": 18
+    },
+    {
+      "name": "Crear componente card",
+      "description": "Crear componente card básico",
+      "start_date": "2024-11-24T05:00:00.000Z",
+      "end_date": "2024-11-24T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 3,
+      "id": 19
+    },
+    {
+      "name": "Testear seguridad de accesos",
+      "description": "Testear la seguridad de accesos a las rutas de la app en dependencia del rol del usuario que accede",
+      "start_date": "2024-11-27T05:00:00.000Z",
+      "end_date": "2024-11-27T05:00:00.000Z",
+      "state": "Pendiente",
+      "userId": 4,
+      "id": 20
+    },
+    {
+      "name": "Testear manejo de errores",
+      "description": "Testear manejo de errores en las solicitudes y formularios",
+      "start_date": "2024-11-27T05:00:00.000Z",
+      "end_date": "2024-11-27T05:00:00.000Z",
+      "state": "Pendiente",
+      "userId": 4,
+      "id": 21
+    },
+    {
+      "name": "Testear accesos a funcionalidades",
+      "description": "Testear accesos a funcionalidades a partir del rol del usuario",
+      "start_date": "2024-11-27T05:00:00.000Z",
+      "end_date": "2024-11-27T05:00:00.000Z",
+      "state": "Pendiente",
+      "userId": 4,
+      "id": 22
+    },
+    {
+      "name": "Crear componente card de usuario",
+      "description": "Implementar  componente card de usuario para la vista móvil",
+      "start_date": "2024-11-24T05:00:00.000Z",
+      "end_date": "2024-11-24T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 3,
+      "id": 23
+    },
+    {
+      "name": "Crear componente card de tareas",
+      "description": "Implementar  componente card de tareas para la vista móvil",
+      "start_date": "2024-11-24T05:00:00.000Z",
+      "end_date": "2024-11-24T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 3,
+      "id": 24
+    },
+    {
+      "name": "Crear componente de filtrado para la vista móvil",
+      "description": "Crear componente de filtrado para la vista móvil",
+      "start_date": "2024-11-26T05:00:00.000Z",
+      "end_date": "2024-11-26T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 25
+    },
+    {
+      "name": "Paginar vista móvil",
+      "description": "Añadir componente de paginación a la vista móvil",
+      "start_date": "2024-11-26T05:00:00.000Z",
+      "end_date": "2024-11-26T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 1,
+      "id": 26
     }
   ]
 }

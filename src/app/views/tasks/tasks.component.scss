@@ -3,6 +3,10 @@
     width: 80%;     
 }
 
+.mobile-filter {
+    width: 100%;
+}
+
 @media (max-width: 760px) {
     app-table {
         display: none;
