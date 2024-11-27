@@ -4,7 +4,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng start` in order to start json-server & angular dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+You can create a new account (it would have user role by default) or use the default admin account (email: admin@admin.com --- pass: Admin123*)
 
 ## Code scaffolding
 
