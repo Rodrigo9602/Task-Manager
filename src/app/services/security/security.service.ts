@@ -1,9 +1,8 @@
-// src/app/core/services/auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
 import { User } from '../../interfaces/user';
-
 
 export interface AuthResponse {
   accessToken: string;
@@ -14,7 +13,7 @@ export interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private headers:HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+  private headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
   private readonly API_URL = 'http://localhost:3000';
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
@@ -30,25 +29,25 @@ export class AuthService {
     }
   }
 
-  login(email: string, password: string): Observable<void> {
-    return this.http.post<AuthResponse>(`${this.API_URL}/login`, { email, password }, {headers: this.headers}).pipe(
+  login(email: string, password: string): Observable<User> {
+    return this.http.post<AuthResponse>(`${this.API_URL}/login`, { email, password }, { headers: this.headers }).pipe(
       tap(response => {
         localStorage.setItem('token', response.accessToken);
         localStorage.setItem('user', JSON.stringify(response.user));
         this.currentUserSubject.next(response.user);
       }),
-      map(() => void 0)
+      map(response => response.user)
     );
   }
 
-  register(userData: Omit<User, 'id'>): Observable<void> {
-    return this.http.post<AuthResponse>(`${this.API_URL}/register`, userData, {headers: this.headers}).pipe(
+  register(userData: Omit<User, 'id'>): Observable<User> {
+    return this.http.post<AuthResponse>(`${this.API_URL}/register`, userData, { headers: this.headers }).pipe(
       tap(response => {
         localStorage.setItem('token', response.accessToken);
         localStorage.setItem('user', JSON.stringify(response.user));
         this.currentUserSubject.next(response.user);
       }),
-      map(() => void 0)
+      map(response => response.user)
     );
   }
 

@@ -1,78 +1,116 @@
-<section class="form-container">
-    <div class="form-wrapper">        
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="custom-form">
-            <div class="form-title-wrapper">
-                <div class="login-p-wrapper">
-                    <span [innerHTML]="appIcon | sanitazer"></span>
-                    <h1>Registro</h1>
-                </div>
-                <div class="header-wrapper">
-                    <p>Una herramienta orientada a la administración de tus tareas</p>
-                </div>
-            </div>
-            <div class="inputs-container">
-                <div class="input-wrapper">
-                    <input type="text" class="input" placeholder="nombre" formControlName="userName"
-                        autocomplete="username" required>
-
-                    <div class="input-icon">
-                        <span [innerHTML]="userIcon | sanitazer"></span>
-                    </div>
-
-                    @if (registerForm.get('userName')?.invalid && (registerForm.get('userName')?.dirty ||
-                    registerForm.get('userName')?.touched)) {
-                    <p class="alert-message">
-                        * nombre de usuario inválido
-                    </p>
-                    }
-                </div>
-
-
-                <div class="input-wrapper">
-                    <input type="email" class="input" placeholder="email" formControlName="userEmail"
-                        autocomplete="email" required>
-
-                    <div class="input-icon">
-                        <span [innerHTML]="emailIcon | sanitazer"></span>
-                    </div>
-
-                    @if (registerForm.get('userEmail')?.invalid && (registerForm.get('userEmail')?.dirty ||
-                    registerForm.get('userEmail')?.touched)) {
-                    <p class="alert-message">
-                        * dirección email inválida
-                    </p>
-                    }
-                </div>
-
-                <div class="input-wrapper">
-                    <input type="{{ showPassword ? 'text' : 'password' }}" class="input" placeholder="contraseña"
-                        autocomplete="current-password" formControlName="userPassword" required>
-
-                    <div class="input-icon">
-                        <span [innerHTML]="passwordIcon | sanitazer"></span>
-                    </div>
-
-                    <button type="button" class="btn-icon" (click)="onShowPassword()">
-                        <span [innerHTML]="showIcon | sanitazer"></span>
-                    </button>
-
-                    @if(registerForm.get('userPassword')?.invalid && (registerForm.get('userPassword')?.dirty ||
-                    registerForm.get('userPassword')?.touched)) {
-                    <p class="alert-message">
-                        * la contraseña debe poseer al menos 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y un
-                        caracter
-                        especial
-                    </p>
-                    }
-                </div>
-            </div>
-            <button type="submit" class="btn-primary" [disabled]="!registerForm.valid">Sign up</button>
-        </form>
-
-        <div class="redirection-wrapper">
-            <p>Ya tienes una cuenta? Inicia sesión pulsando
-                <a class="redirection-link" [routerLink]="['/']">aquí</a>
-            </p>
+<div class="section form-container">
+    <div class="form-wrapper">
+      <div class="form-title-wrapper">
+        <div class="login-p-wrapper">
+          <span [innerHTML]="appIcon | sanitazer"></span>
+          <h1>Registro</h1>
+        </div>       
+  
+        <div class="header-wrapper">
+          Una herramienta orientada a la administración de tus tareas
         </div>
+      </div>
+  
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="inputs-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre de Usuario</mat-label>
+          <input 
+            matInput 
+            type="text" 
+            formControlName="userName" 
+            placeholder="Ingrese su nombre de usuario"
+          >
+          <mat-icon matPrefix>
+            <span [innerHTML]="userIcon | sanitazer"></span>
+          </mat-icon>
+          
+          @if (userNameControl?.invalid && 
+               (userNameControl?.dirty || userNameControl?.touched)) {
+            <mat-error>
+              @if (userNameControl?.errors?.['required']) {
+                * El nombre de usuario es requerido
+              }
+              @if (userNameControl?.errors?.['pattern']) {
+                * Nombre de usuario inválido
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Correo Electrónico</mat-label>
+          <input 
+            matInput 
+            type="email" 
+            formControlName="userEmail" 
+            placeholder="Ingrese su correo"
+          >
+          <mat-icon matPrefix>
+            <span [innerHTML]="emailIcon | sanitazer"></span>
+          </mat-icon>
+          
+          @if (emailControl?.invalid && 
+               (emailControl?.dirty || emailControl?.touched)) {
+            <mat-error>
+              @if (emailControl?.errors?.['required']) {
+                * El correo electrónico es requerido
+              }
+              @if (emailControl?.errors?.['email']) {
+                * Dirección de email inválida
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input 
+            matInput 
+            [type]="showPassword ? 'text' : 'password'" 
+            formControlName="userPassword" 
+            placeholder="Ingrese su contraseña"
+          >
+          <mat-icon matPrefix>
+            <span [innerHTML]="passwordIcon | sanitazer"></span>
+          </mat-icon>
+          <button 
+            mat-icon-button 
+            matSuffix 
+            type="button" 
+            (click)="onShowPassword()"
+          >
+            <mat-icon>
+              <span [innerHTML]="showIcon | sanitazer"></span>
+            </mat-icon>
+          </button>
+          
+          @if (passwordControl?.invalid && 
+               (passwordControl?.dirty || passwordControl?.touched)) {
+            <mat-error>
+              * La contraseña debe poseer al menos 8 caracteres, 
+              1 mayúscula, 1 minúscula, 1 número y un caracter especial
+            </mat-error>
+          }
+        </mat-form-field>
+  
+        <button 
+          mat-raised-button 
+          color="primary" 
+          type="submit" 
+          [disabled]="registerForm.invalid"
+        >
+          Sign up
+        </button>
+      </form>
+  
+      <div class="redirection-wrapper">
+        Ya tienes una cuenta? Inicia sesión pulsando 
+        <a 
+          class="redirection-link" 
+          [routerLink]="['/']"
+        >
+          aquí
+        </a>
+      </div>
     </div>
-</section>
+  </div>

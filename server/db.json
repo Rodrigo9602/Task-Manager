@@ -170,7 +170,7 @@
       "description": "Configurar manejo de errores en los componentes principales",
       "start_date": "2024-11-27T05:00:00.000Z",
       "end_date": "2024-11-27T05:00:00.000Z",
-      "state": "Pendiente",
+      "state": "Completada",
       "userId": 2,
       "id": 16
     },
@@ -179,7 +179,7 @@
       "description": "Implementar alertas en los componentes principales",
       "start_date": "2024-11-27T05:00:00.000Z",
       "end_date": "2024-11-27T05:00:00.000Z",
-      "state": "En Proceso",
+      "state": "Completada",
       "userId": 1,
       "id": 17
     },
@@ -206,7 +206,7 @@
       "description": "Testear la seguridad de accesos a las rutas de la app en dependencia del rol del usuario que accede",
       "start_date": "2024-11-27T05:00:00.000Z",
       "end_date": "2024-11-27T05:00:00.000Z",
-      "state": "Pendiente",
+      "state": "En Proceso",
       "userId": 4,
       "id": 20
     },
@@ -224,7 +224,7 @@
       "description": "Testear accesos a funcionalidades a partir del rol del usuario",
       "start_date": "2024-11-27T05:00:00.000Z",
       "end_date": "2024-11-27T05:00:00.000Z",
-      "state": "Pendiente",
+      "state": "En Proceso",
       "userId": 4,
       "id": 22
     },
@@ -269,7 +269,7 @@
       "description": "Testear componente de Alerta",
       "start_date": "2024-11-26T05:00:00.000Z",
       "end_date": "2024-11-26T05:00:00.000Z",
-      "state": "En Proceso",
+      "state": "Completada",
       "userId": 1,
       "id": 27
     },
@@ -278,9 +278,18 @@
       "description": "Modificar las peticiones del servicio de usuarios para que devuelvan la respuesta de la petición",
       "start_date": "2024-11-26T05:00:00.000Z",
       "end_date": "2024-11-26T05:00:00.000Z",
-      "state": "Pendiente",
+      "state": "Completada",
       "userId": 1,
       "id": 28
+    },
+    {
+      "name": "Revisar requerimientos funcionales",
+      "description": "Revisar los requerimientos funcionales en la orientación de la aplicación",
+      "start_date": "2024-11-27T05:00:00.000Z",
+      "end_date": "2024-11-27T05:00:00.000Z",
+      "state": "Completada",
+      "userId": 3,
+      "id": 29
     }
   ]
 }

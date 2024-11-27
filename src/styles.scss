@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+
+
 :root {
     --items-bg: #ebecf0;
     --items-color-gradient: #3f8ae5;
@@ -36,6 +37,34 @@ body {
     background-color: var(--bg);
     color: var(--text-color);
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 
@@ -66,13 +95,7 @@ p {
 
 .swal2-popup {
     font-size: 1.25rem !important;
-    font-family: 'poppins';   
-}
-
-.btn {
-    border: none;
-    background-color: transparent;
-    padding: 5px;
+    font-family: 'poppins';
 }
 
 .btn-primary {
@@ -129,136 +152,131 @@ textarea:-webkit-autofill:focus {
     cursor: pointer;
 }
 
-.form-container {
+.section.form-container {
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    .form-wrapper {
+        width: 90%;
+        max-width: 450px;
+        height: auto;
+        padding: 20px 10px;
+        border: 1px solid #c5c5c5;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        .form-title-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .login-p-wrapper {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 8px;
+            }
+
+            .header-wrapper {
+                text-align: start;
+                font-family: 'poppins';
+                font-size: 18px;
+            }
+
+            h1 {
+                margin-bottom: 10px;
+            }
+        }
+
+        form {
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+
+            .mat-mdc-form-field {
+                width: 100%;
+
+                // Adjust prefix icon styles
+                .mat-mdc-form-field-icon-prefix {
+                    margin-right: 12px;
+                }
+
+                // Adjust error message styles
+                .mat-mdc-form-field-error {
+                    font-size: 0.7rem;
+                    color: #eb2929;
+                }
+            }
+
+            // Password show/hide button
+            .mat-icon-button {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .mdc-text-field--outlined .mat-mdc-form-field-infix {
+                min-height: 56px;
+            }
+
+            // Submit button
+            .mat-mdc-raised-button {
+                width: 90%;
+                height: 40px;
+                margin-top: 20px;
+                font-family: 'poppins';
+                font-size: 16px;
+            }
+        }
+
+        .redirection-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            text-align: center;
+            margin-top: 15px;
+            font-family: 'poppins';
+            font-size: 16px;
+
+            .redirection-link {
+                font-size: 16px;
+                font-family: 'poppins';
+                color: var(--items-color);
+                cursor: pointer;
+                text-decoration: none;
+            }
+        }
+    }
 }
 
-.form-wrapper {
-    width: 90%;
-    max-width: 450px;
-    height: auto;
-    padding: 20px 10px;
-    border: 1px solid #c5c5c5;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
+// Responsive adjustments
+@media (max-width: 480px) {
+    .section.form-container .form-wrapper {
+        width: 95%;
+        padding: 15px 5px;
 
-.custom-form {
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-}
-
-.form-title-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.login-p-wrapper {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-}
-
-.header-wrapper {
-    margin-top: -30px;
-}
-
-.inputs-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-}
-
-.input-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.input {
-    width: 80%;
-    height: 2rem;
-    border: 1px solid #000;
-    border-radius: 0.3rem;
-    background-color: var(--items-bg);
-    color: var(--text-color);
-    padding-left: 3rem;
-    font-family: 'poppins';
-    font-size: 1rem;
-    outline: none;
-}
-
-.alert-message {
-    font-size: 0.7rem;
-    color: #eb2929;
-    align-self: flex-start;
-    margin-left: 5%;
-    width: 90%;
-}
-
-.input-icon {
-    margin-top: -32px;
-    margin-left: -85%;
-    border-right: 1px solid #000;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-icon {
-    border: none;
-    background-color: transparent;
-    margin-top: -30px;
-    margin-left: 80%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.redirection-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-align: center;
-}
-
-
-.redirection-wrapper .redirection-link {
-    font-family: 'ibm';
-    font-size: 18px;
-    color: var(--items-color);
-    cursor: pointer;
+        form {
+            padding: 5px;
+            gap: 20px;
+        }
+    }
 }
 
 app-users,
@@ -267,7 +285,7 @@ app-table {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
 }
 
 app-user-card,
@@ -279,4 +297,8 @@ app-tasks-card {
     width: 2px;
     background-color: var(--text-color);
     height: 20px;
+}
+
+matInput {
+    color: var(--text-color) !important;
 }
